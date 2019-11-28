@@ -1,46 +1,44 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-class Loginscreen extends Component {
-constructor(props){
-  super(props);
-  this.state={
-  username:'',
-  password:''
+const Loginscreen = () => {
+
+  const [state, setState] = useState();
+
+  const handleClick = () => {
+    console.log('log in', state);
   }
- }
-render() {
-    return (
-      <div>
-        <MuiThemeProvider>
-          <div>
-          <AppBar
-             title="Login"
-           />
-           <TextField
-             hintText="Enter your Username"
-             floatingLabelText="Username"
-             onChange = {(event,newValue) => this.setState({username:newValue})}
-             />
-           <br/>
-             <TextField
-               type="password"
-               hintText="Enter your Password"
-               floatingLabelText="Password"
-               onChange = {(event,newValue) => this.setState({password:newValue})}
-               />
-             <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-         </div>
-         </MuiThemeProvider>
-      </div>
-    );
-  }
+
+
+  return (
+    <div>
+      <MuiThemeProvider>
+        <div>
+          <h1> Log in </h1>
+          <TextField
+            hintText="Enter your Username"
+            floatingLabelText="Username"
+            onChange={(event, newValue) => setState({ username: newValue })}
+          />
+          <br />
+          <TextField
+            type="password"
+            hintText="Enter your Password"
+            floatingLabelText="Password"
+            onChange={(event, newValue) => setState({ password: newValue })}
+          />
+          <br />
+          <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => handleClick(event)} />
+        </div>
+      </MuiThemeProvider>
+    </div>
+  );
 }
+
 const style = {
- margin: 15,
- 
+  margin: 15,
+
 };
 export default Loginscreen;
