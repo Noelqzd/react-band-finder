@@ -167,11 +167,11 @@ export default function Blog() {
             {
               <img
                 style={{ display: 'none' }}
-                src="https://source.unsplash.com/user/erondu"
+                src="https://source.unsplash.com/photos/random?collection=827741"
                 alt="background"
               />
             }
-            
+           
             <div className={classes.overlay} />
             <Grid container>
               <Grid item md={6}>
