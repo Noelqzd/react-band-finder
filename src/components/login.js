@@ -1,9 +1,10 @@
-import React, { Component, useState } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import React, { useState,} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Loginscreen from './Loginscreen';
 import Register from './Register';
 const Login = () => {
+ 
+
 
   const [state, setState] = useState({ buttonLabel: 'Register', isLogin: true });
   const handleClick = () => {

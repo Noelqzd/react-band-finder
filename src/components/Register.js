@@ -1,44 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { SessionContext } from '../App';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import Axios from 'axios'
 const Register = () => {
-  const [state, setState] = useState();
+  const [state, setState] = useState({});
+  const { session, setSession } = useContext(SessionContext);
 
-  const handleClick = () => {
-    console.log('log in', state);
+
+  const handleClick = async () => {
+    try {
+
+      const response = await Axios.post("https://band-api.herokuapp.com/api/bands", { email: state.email, password: state.password, name: state.name });
+     
+    } catch (e) {
+      setState({ ...state, error: e.response.data.error.message })
+    }
   }
-  
 
   return (
     <div>
       <MuiThemeProvider>
         <div>
           <h1>Register</h1>
+          {state.error?<div>{state.error}</div>:null}
           <TextField
-            hintText="Enter your First Name"
-            floatingLabelText="First Name"
-            onChange={(event, newValue) => setState({ first_name: newValue })}
+            hintText="Enter your Band Name"
+            floatingLabelText="Band Name"
+            onChange={(event, name) => setState({ ...state, name })}
           />
           <br />
-          <TextField
-            hintText="Enter your Last Name"
-            floatingLabelText="Last Name"
-            onChange={(event, newValue) => setState({ last_name: newValue })}
-          />
-          <br />
+
           <TextField
             hintText="Enter your Email"
             type="email"
             floatingLabelText="Email"
-            onChange={(event, newValue) => setState({ email: newValue })}
+            onChange={(event, email) => setState({ ...state, email })}
           />
           <br />
           <TextField
             type="password"
             hintText="Enter your Password"
             floatingLabelText="Password"
-            onChange={(event, newValue) => setState({ password: newValue })}
+            onChange={(event, password) => setState({...state, password })}
           />
           <br />
           <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => handleClick(event)} />

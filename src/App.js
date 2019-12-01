@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 import Main from './components/main';
 import { Link } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-class App extends Component {
-  render() {
-    return (
+
+export const SessionContext = createContext();
+const App = () => {
+  const [session, setSession] = useState({});
+  return (
+    <SessionContext.Provider value={{ session, setSession }}>
       <MuiThemeProvider>
         <div className="demo-big-content">
           <Layout>
@@ -33,9 +36,9 @@ class App extends Component {
 
         </div>
       </MuiThemeProvider>
+    </SessionContext.Provider>
 
-    );
-  }
+  );
 }
 
 export default App;
