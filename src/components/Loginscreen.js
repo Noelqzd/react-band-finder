@@ -18,16 +18,17 @@ const Loginscreen = () => {
         <div>
           <h1> Log in </h1>
           <TextField
+            type="text"
             hintText="Enter your Username"
             floatingLabelText="Username"
-            onChange={(event, newValue) => setState({ username: newValue })}
+            onChange={(event, username) => setState({ ...state,username })}
           />
           <br />
           <TextField
             type="password"
             hintText="Enter your Password"
             floatingLabelText="Password"
-            onChange={(event, newValue) => setState({ password: newValue })}
+            onChange={(event, password) => setState({ ...state,password })}
           />
           <br />
           <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => handleClick(event)} />
