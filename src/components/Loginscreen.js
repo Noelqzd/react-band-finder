@@ -4,18 +4,23 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Axios from 'axios';
+import { useHistory } from "react-router-dom";
+
 const Loginscreen = () => {
-  const { session, setSession } = useContext(SessionContext);
+  const { setSession } = useContext(SessionContext);
 
   const [state, setState] = useState({});
+  const history = useHistory();
 
   const handleClick = async () => {
-    try{
-      
-      const response = await Axios.post("https://band-api.herokuapp.com/api/bands/login", { email: state.email, password: state.password });
-      console.log(response);
-    } catch(e){
-      setState({...state, error: "Unable to login, try again"})
+    try {
+
+      const response = await Axios.post("https://band-api.herokuapp.com/api/bands/login?include=user", { email: state.email, password: state.password });
+
+      setSession(response.data);
+      history.push("/edit-page");
+    } catch (e) {
+      setState({ ...state, error: "Unable to login, try again" })
     }
   }
 
@@ -25,7 +30,7 @@ const Loginscreen = () => {
       <MuiThemeProvider>
         <div>
           <h1> Log in </h1>
-  {state.error?<div>{state.error}</div>:null}
+          {state.error ? <div>{state.error}</div> : null}
           <TextField
             type="text"
             hintText="Enter your E-mail"

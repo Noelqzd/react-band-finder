@@ -20,7 +20,7 @@ const Login = () => {
   return (
     <div className="loginscreen">
 
-      {state.isLogin ? <Loginscreen /> : <Register />}
+      {state.isLogin ? <Loginscreen /> : <Register onRegister={handleClick} />}
       <div>
 
 
