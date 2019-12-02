@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-// import SearchIcon from '@material-ui/icons/Search';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -16,10 +15,7 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-import Markdown from './Markdown';
-// import post1 from './blog-post.1.md';
-// import post2 from './blog-post.2.md';
-// import post3 from './blog-post.3.md';
+import CardActions from '@material-ui/core/CardActions';
 
 function Copyright() {
   return (
@@ -33,6 +29,8 @@ function Copyright() {
     </Typography>
   );
 }
+
+
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -103,20 +101,15 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
   },
+
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140
+  },
 }));
 
-const sections = [
-  'Technology',
-  'Design',
-  'Culture',
-  'Business',
-  'Politics',
-  'Opinion',
-  'Science',
-  'Health',
-  'Style',
-  'Travel',
-];
 
 const featuredPosts = [
   {
@@ -133,8 +126,6 @@ const featuredPosts = [
   },
 ];
 
-// const posts = [post1, post2, post3];
-
 const archives = [
   'March 2020',
   'February 2020',
@@ -149,6 +140,7 @@ const archives = [
   'May 2019',
   'April 2019',
 ];
+
 
 const social = ['GitHub', 'Twitter', 'Facebook'];
 
@@ -252,18 +244,42 @@ export default function Blog() {
             {/* Main content */}
             <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
-                From the Firehose
+              As a proven leader in online music services, BandMix.com's thousands of profiles mean thousands of possibilities to connect with the right Bands. Browse the Listings by genre or nearby, or search for exactly what you are looking for.
               </Typography>
               <Divider />
-              {/* {posts.map(post => (
-                <Markdown className={classes.markdown} key={post.substring(0, 40)}>
-                  {post} */}
-                {/* </Markdown> */}
-              ))}
+             
+             
+
+              <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="/static/images/cards/contemplative-reptile.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            Lizard
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+        <Button size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions>
+    </Card>
+ 
 
 
-
-              something ... . .. . .
+              
             </Grid>
             {/* End main content */}
             {/* Sidebar */}

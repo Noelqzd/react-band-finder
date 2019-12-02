@@ -12,6 +12,7 @@ import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import TextField from 'material-ui/TextField';
 import { SessionContext } from '../App';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 function Copyright() {
   return (
@@ -196,28 +197,37 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
             {/* Main content */}
             <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
-                From the Firehose
+              Create a Beautiful Website With Just A Few Clicks Based Off Your Band Profile
+Videos,Gallery,Blog
               </Typography>
               <Divider />
               {/* {posts.map(post => (
                 <Markdown className={classes.markdown} key={post.substring(0, 40)}>
                   {post} */}
               {/* </Markdown> */}
+              <Grid container spacing={1} alignItems="flex-end">
+                <Grid item>
+                  <AccountCircle />
+                  
+                </Grid>
+                <TextField
+                  type="text"
+                  hintText="Enter your band name"
+                  floatingLabelText="Band Name"
+                  onChange={(event, name) => setState({ ...state, name })}
+                  value={state.name}
+                />
+                <br />
+                <Grid item>
+                </Grid>
+              </Grid>
 
 
-              <TextField
-                type="text"
-                hintText="Enter your band name"
-                floatingLabelText="Band Name"
-                onChange={(event, name) => setState({ ...state, name })}
-                value={state.name}
-              />
-              <br />
-
-              <TextField
+              <TextField id="input-with-icon-grid" label="With a grid"
                 multiLine
                 rows="5"
                 type="text"
+
                 hintText="Edit your band description"
                 floatingLabelText="Band Description"
                 onChange={(event, bio) => setState({ ...state, bio })}
@@ -227,7 +237,30 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
 
 
 
-
+              <TextField
+                type="text"
+                hintText="Add you'r videos"
+                floatingLabelText="Add or delete videos"
+                onChange={(event, videos) => setState({ ...state, videos })}
+                value={state.videos}
+              />
+              <br />
+              <TextField
+                type="text"
+                hintText="Add you'r images"
+                floatingLabelText="Add Images"
+                onChange={(event, imgUrl) => setState({ ...state, imgUrl })}
+                value={state.imgUrl}
+              />
+              <br />
+              <TextField
+                type="text"
+                hintText="Enter your band genre"
+                floatingLabelText="Edit Genre"
+                onChange={(event, genreId) => setState({ ...state, genreId })}
+                value={state.genreId}
+              />
+              <br />
 
 
             </Grid>
