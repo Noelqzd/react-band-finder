@@ -168,7 +168,7 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
 
           </Paper>
           <Toolbar className={classes.toolbar}>
-            <Button size="small">Subscribe</Button>
+
             <Typography
               component="h2"
               variant="h5"
@@ -177,14 +177,11 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
               noWrap
               className={classes.toolbarTitle}
             >
-              Search
-          </Typography>
-            <IconButton>
-              {/* <SearchIcon /> */}
-            </IconButton>
-            <Button variant="outlined" size="small">
-              Sign up
-          </Button>
+              <Button variant="contained" color="primary">
+                Go to profile
+              </Button>
+            </Typography>
+
           </Toolbar>
 
           {/* End main featured post */}
@@ -197,8 +194,8 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
             {/* Main content */}
             <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
-              Create a Beautiful Website With Just A Few Clicks Based Off Your Band Profile
-Videos,Gallery,Blog
+                Create a Beautiful Website With Just A Few Clicks Based Off Your Band Profile
+  Videos,Gallery,Blog
               </Typography>
               <Divider />
               {/* {posts.map(post => (
@@ -208,7 +205,7 @@ Videos,Gallery,Blog
               <Grid container spacing={1} alignItems="flex-end">
                 <Grid item>
                   <AccountCircle />
-                  
+
                 </Grid>
                 <TextField
                   type="text"
@@ -262,6 +259,10 @@ Videos,Gallery,Blog
               />
               <br />
 
+
+              <Button variant="contained" color="primary">
+                Go to my profile
+</Button>
 
             </Grid>
             {/* End main content */}

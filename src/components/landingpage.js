@@ -12,10 +12,16 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
 import Link from '@material-ui/core/Link';
-import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-import CardActions from '@material-ui/core/CardActions';
+import SearchIcon from '@material-ui/icons/Search';
+import InfoIcon from '@material-ui/icons/Info';
+import tileData from './tileData';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import ListSubheader from '@material-ui/core/ListSubheader';
+
 
 function Copyright() {
   return (
@@ -31,6 +37,7 @@ function Copyright() {
 }
 
 
+  
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -102,12 +109,26 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(6, 0),
   },
 
-  card: {
-    maxWidth: 345,
+  
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+    width: 700,
+    height: 950,
+  },
+  icon: {
+    color: 'rgba(255, 255, 255, 0.54)',
   },
   media: {
     height: 140
   },
+
+  
 }));
 
 
@@ -115,6 +136,18 @@ const featuredPosts = [
   {
     title: 'Featured post',
     date: 'Nov 12',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+  },
+  {
+    title: 'Post title',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+  },
+  {
+    title: 'Post title',
+    date: 'Nov 11',
     description:
       'This is a wider card with supporting text below as a natural lead-in to additional content.',
   },
@@ -151,7 +184,7 @@ export default function Blog() {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
-        
+
         <main>
           {/* Main featured post */}
           <Paper className={classes.mainFeaturedPost}>
@@ -163,7 +196,7 @@ export default function Blog() {
                 alt="background"
               />
             }
-           
+
             <div className={classes.overlay} />
             <Grid container>
               <Grid item md={6}>
@@ -179,30 +212,29 @@ export default function Blog() {
                     Continue reading…
                   </Link>
                 </div>
-                
+
               </Grid>
             </Grid>
-            
+
           </Paper>
           <Toolbar className={classes.toolbar}>
-          <Button size="small">Subscribe</Button>
-          <Typography
-            component="h2"
-            variant="h5"
-            color="inherit"
-            align="center"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-            Search
-          </Typography>
-          <IconButton>
-            {/* <SearchIcon /> */}
-          </IconButton>
-          <Button variant="outlined" size="small">
-            Sign up
-          </Button>
-        </Toolbar>
+           
+            <Typography
+              component="h1"
+              variant="h5"
+              color="inherit"
+              align="center"
+              noWrap
+              className={classes.toolbarTitle}
+            >
+              Search <IconButton>
+                <SearchIcon />
+              </IconButton>
+
+            </Typography>
+            
+            
+          </Toolbar>
 
           {/* End main featured post */}
           {/* Sub featured posts */}
@@ -244,42 +276,37 @@ export default function Blog() {
             {/* Main content */}
             <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
-              As a proven leader in online music services, BandMix.com's thousands of profiles mean thousands of possibilities to connect with the right Bands. Browse the Listings by genre or nearby, or search for exactly what you are looking for.
+                As a proven leader in online music services, BandMix.com's thousands of profiles mean thousands of possibilities to connect with the right Bands. Browse the Listings by genre or nearby, or search for exactly what you are looking for.
               </Typography>
               <Divider />
-             
-             
-
-              <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
- 
 
 
-              
+              <div className={classes.root}>
+      <GridList cellHeight={180} className={classes.gridList}>
+        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+          <ListSubheader component="div">December</ListSubheader>
+        </GridListTile>
+        {tileData.map(tile => (
+          <GridListTile key={tile.img}>
+            <img src={tile.img} alt={tile.title} />
+            <GridListTileBar
+              title={tile.title}
+              subtitle={<span>by: {tile.author}</span>}
+              actionIcon={
+                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
+                  <InfoIcon />
+                </IconButton>
+              }
+            />
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>
+  );
+}
+     
+
+
             </Grid>
             {/* End main content */}
             {/* Sidebar */}
@@ -289,6 +316,8 @@ export default function Blog() {
                   About
                 </Typography>
                 <Typography>
+                  Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit
+                  amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
                   Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit
                   amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
                 </Typography>

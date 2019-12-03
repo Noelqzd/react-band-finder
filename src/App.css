@@ -5,6 +5,12 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 
 }
 
+header{
+  position: fixed;
+}
+
+
+
 /* ABOUT ME */
 
    .contact-body {
@@ -98,3 +104,6 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
   display: flex;
 }
 
+.footer-color{
+background: black;
+}
