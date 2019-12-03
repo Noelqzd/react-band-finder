@@ -261,7 +261,7 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
 
 
               <Button variant="contained" color="primary">
-                Go to my profile
+                Submit
 </Button>
 
             </Grid>

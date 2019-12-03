@@ -36,6 +36,7 @@ const App = () => {
               <Navigation>
                 <Link to="/edit-page">Edit Page</Link>
                 <Link to="/aboutme">About Me</Link>
+                <Link to="/myprofile">My Profile</Link>
                 <Link to="/login">{session.userId ? "Logout" : "Login"}</Link>
               </Navigation>
             </Header>
@@ -43,6 +44,7 @@ const App = () => {
               <Navigation>
                 <Link to="/edit-page">Edit Page</Link>
                 <Link to="/aboutme">About Me</Link>
+                <Link to="/myprofile">My Profile</Link>
                 <Link to="/login">Login</Link>
               </Navigation>
             </Drawer>
