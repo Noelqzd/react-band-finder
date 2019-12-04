@@ -14,7 +14,6 @@ import Hidden from '@material-ui/core/Hidden';
 import Link from '@material-ui/core/Link';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-import SearchIcon from '@material-ui/icons/Search';
 import InfoIcon from '@material-ui/icons/Info';
 import tileData from './tileData';
 import GridList from '@material-ui/core/GridList';
