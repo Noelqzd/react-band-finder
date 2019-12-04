@@ -161,23 +161,7 @@ const featuredPosts = [
   },
 ];
 
-const archives = [
-  'March 2020',
-  'February 2020',
-  'January 2020',
-  'December 2019',
-  'November 2019',
-  'October 2019',
-  'September 2019',
-  'August 2019',
-  'July 2019',
-  'June 2019',
-  'May 2019',
-  'April 2019',
-];
 
-
-const social = ['GitHub', 'Twitter', 'Facebook'];
 
 export default function Blog() {
   const classes = useStyles();
@@ -204,7 +188,7 @@ export default function Blog() {
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                  SEEKING BANDS?
+                    SEEKING BANDS?
 Search Thousands of Musicians and Bands:
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
@@ -277,12 +261,18 @@ Search Thousands of Musicians and Bands:
             {/* Main content */}
             <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
-                As a proven leader in online music services, BandMix.com's thousands of profiles mean thousands of possibilities to connect with the right Bands. Browse the Listings by genre or nearby, or search for exactly what you are looking for.
+                <h4>As a proven leader in online music services, BandFinder.com</h4>
+                 <h5>thousands of profiles mean thousands of possibilities to connect with the right Bands. Browse the Listings by genre or nearby, or search for exactly what you are looking for.</h5>
+                 <h3>SEARCH BAR HERE</h3>  
               </Typography>
 
 
               
               <Divider />
+
+
+
+ 
 
 
               <div className={classes.root}>
@@ -316,33 +306,22 @@ Search Thousands of Musicians and Bands:
             {/* Sidebar */}
             <Grid item xs={12} md={4}>
               <Paper elevation={0} className={classes.sidebarAboutBox}>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h5" gutterBottom>
                   About
                 </Typography>
                 <Typography>
-                  Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit
-                  amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
-                  Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit
-                  amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+               <h5> BandFinder is a service for serious Bands.</h5> 
+               <h6>Our goal is to provide the most useful online resource that connects the best Bands with you.</h6>
+
+                Are you looking for a band?
+                 BandFinder understands the differences. You each have different needs, and now, there's one website that truly understands how to help you or your band find exactly what you're looking for.
                 </Typography>
               </Paper>
-              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-                Archives
-              </Typography>
-              {archives.map(archive => (
-                <Link display="block" variant="body1" href="#" key={archive}>
-                  {archive}
-                </Link>
-              ))}
-              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-                Social
-              </Typography>
-              {social.map(network => (
-                <Link display="block" variant="body1" href="#" key={network}>
-                  {network}
-                </Link>
-              ))}
+             
+              
+            
             </Grid>
+
             {/* End sidebar */}
           </Grid>
         </main>

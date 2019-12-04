@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -13,6 +12,10 @@ import Container from '@material-ui/core/Container';
 import TextField from 'material-ui/TextField';
 import { SessionContext } from '../App';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
 
 function Copyright() {
   return (
@@ -26,6 +29,9 @@ function Copyright() {
     </Typography>
   );
 }
+
+
+
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -96,6 +102,19 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
   },
+
+  // container: {
+  //   display: 'flex',
+  //   flexWrap: 'wrap',
+  //   flexDirection: 'column',
+  // },
+
+  // textField: {
+  //   marginLeft: theme.spacing(1),
+  //   marginRight: theme.spacing(1),
+  //   width: '300px',
+  // },
+
 }));
 
 
@@ -184,86 +203,90 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
 
           </Toolbar>
 
-          {/* End main featured post */}
-          {/* Sub featured posts */}
-          <Grid container spacing={4}>
 
-          </Grid>
           {/* End sub featured posts */}
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Main content */}
-            <Grid item xs={12} md={8}>
+            <Grid alignItems="stretch" item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
                 Create a Beautiful Website With Just A Few Clicks Based Off Your Band Profile
   Videos,Gallery,Blog
               </Typography>
-              <Divider />
-              {/* {posts.map(post => (
-                <Markdown className={classes.markdown} key={post.substring(0, 40)}>
-                  {post} */}
-              {/* </Markdown> */}
-              <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                  <AccountCircle />
 
-                </Grid>
+              <form>
                 <TextField
                   type="text"
+                  fullWidth
                   hintText="Enter your band name"
                   floatingLabelText="Band Name"
                   onChange={(event, name) => setState({ ...state, name })}
                   value={state.name}
                 />
                 <br />
-                <Grid item>
-                </Grid>
-              </Grid>
-
-
-              <TextField id="input-with-icon-grid" label="With a grid"
-                multiLine
-                rows="5"
-                type="text"
-
-                hintText="Edit your band description"
-                floatingLabelText="Band Description"
-                onChange={(event, bio) => setState({ ...state, bio })}
-                value={state.bio}
-              />
-              <br />
 
 
 
-              <TextField
-                type="text"
-                hintText="Add you'r videos"
-                floatingLabelText="Add or delete videos"
-                onChange={(event, videos) => setState({ ...state, videos })}
-                value={state.videos}
-              />
-              <br />
-              <TextField
-                type="text"
-                hintText="Add you'r images"
-                floatingLabelText="Add Images"
-                onChange={(event, imgUrl) => setState({ ...state, imgUrl })}
-                value={state.imgUrl}
-              />
-              <br />
-              <TextField
-                type="text"
-                hintText="Enter your band genre"
-                floatingLabelText="Edit Genre"
-                onChange={(event, genreId) => setState({ ...state, genreId })}
-                value={state.genreId}
-              />
-              <br />
+                <TextField id="input-with-icon-grid" label="With a grid"
+                  multiLine
+                  rows="5"
+                  type="text"
+                  fullWidth
+                  hintText="Edit your band description"
+                  floatingLabelText="Band Description"
+                  onChange={(event, bio) => setState({ ...state, bio })}
+                  value={state.bio}
+                />
+                <br />
 
 
-              <Button variant="contained" color="primary">
-                Submit
+
+                <TextField
+                  type="text"
+                  fullWidth
+                  hintText="Add you'r videos"
+                  floatingLabelText="Add or delete videos"
+                  onChange={(event, videos) => setState({ ...state, videos })}
+                  value={state.videos}
+                />
+                <br />
+                <TextField
+                  type="text"
+                  fullWidth
+                  hintText="Add your images"
+                  floatingLabelText="Add Images"
+                  onChange={(event, imgUrl) => setState({ ...state, imgUrl })}
+                  value={state.imgUrl}
+                />
+                <br />
+
+                <FormControl fullWidth className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-label">Genre</InputLabel>
+
+                  <Select
+
+
+
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={state.genreId}
+                    fullWidth
+                    onChange={(event, genreId) => setState({ ...state, genreId })}
+                  >
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
+                </FormControl>
+
+
+
+                <br />
+
+                <Button variant="contained" color="primary">
+                  Submit
 </Button>
 
+              </form>
             </Grid>
             {/* End main content */}
             {/* Sidebar */}
