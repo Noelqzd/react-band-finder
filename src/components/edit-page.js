@@ -7,15 +7,14 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import TextField from 'material-ui/TextField';
 import { SessionContext } from '../App';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import Axios from 'axios';
 
 function Copyright() {
   return (
@@ -138,15 +137,60 @@ const social = ['GitHub', 'Twitter', 'Facebook'];
 
 export default function EditPage() {
   const classes = useStyles();
-  const { session } = useContext(SessionContext);
-  const [state, setState] = useState({});
+  const { session, setSession } = useContext(SessionContext);
+  const [state, setState] = useState({videos:[]});
+  const [genres, setGenres] = useState([]);
+
+
+
   useEffect(() => {
     if (session.user) {
 
-      setState(session.user)
+      setState({ ...session.user, videos: session.user.videos || [] })
     }
   }, [session]);
-  console.log({ session, state });
+
+  useEffect(() => {
+    loadGenres()
+  }, [])
+
+  const loadGenres = () => {
+    Axios.get('https://band-api.herokuapp.com/api/genres').then((response) => {
+      setGenres(response.data);
+    })
+  }
+console.log(state);
+
+  const saveBand = () => {
+    Axios.patch(`https://band-api.herokuapp.com/api/bands/${session.userId}`, {
+      "name": state.name,
+      "bio": state.bio,
+      "imgUrl": state.imgUrl,
+      "videos": state.videos,
+      // "location": {},
+      "genreId": state.genreId,
+    }, {
+      headers: {
+        Authorization: session.id
+      }
+    }).then(() => {
+      console.log("Success");
+      setSession({
+        ...session,
+        user: {
+          ...session.user,
+          ...state
+        }
+      });
+    }).catch((e) => {
+      console.log(state)
+      console.log("Fail", e);
+    });
+  }
+
+
+
+
 
 
   return (
@@ -239,16 +283,29 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
                 <br />
 
 
+                {state.videos.map((video, i) =>
+                  <TextField
+                    type="text"
+                    fullWidth
+                    hintText="Add you'r videos"
+                    floatingLabelText="Add or delete videos"
+                    onChange={(event, value) => {
+                      const videos = state.videos;
+                      videos[i] = value
+                      setState({ ...state, videos })
+                    }}
+                    value={video}
+                  />
+                )}
 
-                <TextField
-                  type="text"
-                  fullWidth
-                  hintText="Add you'r videos"
-                  floatingLabelText="Add or delete videos"
-                  onChange={(event, videos) => setState({ ...state, videos })}
-                  value={state.videos}
-                />
-                <br />
+                <Button variant="contained" color="primary" onClick={(event, value) => {
+                  const videos = state.videos;
+                  videos.push("")
+                  setState({ ...state, videos })
+                }}>
+                  Add Video
+</Button>
+
                 <TextField
                   type="text"
                   fullWidth
@@ -270,11 +327,12 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
                     id="demo-simple-select"
                     value={state.genreId}
                     fullWidth
-                    onChange={(event, genreId) => setState({ ...state, genreId })}
+                    onChange={(event) => setState({ ...state, genreId: event.target.value })}
                   >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+
+                    {genres.map((item) => {
+                      return <MenuItem value={item.id} key={item.id}>{item.name}</MenuItem>
+                    })}
                   </Select>
                 </FormControl>
 
@@ -282,7 +340,7 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
 
                 <br />
 
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" onClick={saveBand}>
                   Submit
 </Button>
 
