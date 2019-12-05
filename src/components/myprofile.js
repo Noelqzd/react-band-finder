@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import Avatar from '@material-ui/core/Avatar';
 
+
 import { SessionContext } from '../App';
 
 
@@ -279,4 +280,3 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
     </React.Fragment>
   );
 }
-

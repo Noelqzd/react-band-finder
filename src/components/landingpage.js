@@ -14,14 +14,11 @@ import Hidden from '@material-ui/core/Hidden';
 import Link from '@material-ui/core/Link';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-import InfoIcon from '@material-ui/icons/Info';
-import tileData from './tileData';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
+
 
 
 function Copyright() {
@@ -83,6 +80,8 @@ const useStyles = makeStyles(theme => ({
   },
   mainGrid: {
     marginTop: theme.spacing(3),
+    background: 'rgb(24,76,108)',
+background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 91%)',
   },
   card: {
     display: 'flex',
@@ -105,9 +104,11 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(3),
   },
   footer: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'black',
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
+
+    
   },
 
   
@@ -116,19 +117,16 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    background: 'rgb(145,181,203)',
+    background: 'linear-gradient(145deg, rgba(145,181,203,1) 72%, rgba(190,214,238,1) 91%)',
   },
   gridList: {
     width: 700,
     height: 950,
   },
-  icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
-  },
-  media: {
-    height: 140
-  },
-
+  
+ 
+  
   
 }));
 
@@ -140,24 +138,8 @@ const featuredPosts = [
     description:
       'This is a wider card with supporting text below as a natural lead-in to additional content.',
   },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-  },
+  
+ 
 ];
 
 
@@ -259,44 +241,94 @@ Search Thousands of Musicians and Bands:
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Main content */}
             <Grid item xs={12} md={8}>
-              <Typography variant="h6" gutterBottom>
-                <h4>As a proven leader in online music services, BandFinder.com</h4>
-                 <h5>thousands of profiles mean thousands of possibilities to connect with the right Bands. Browse the Listings by genre or nearby, or search for exactly what you are looking for.</h5>
-                 <h3>SEARCH BAR HERE</h3>  
-              </Typography>
+              
 
+              <Paper className={classes.root}>
+      <Typography variant="h5" component="h3">
+      <h4>As a proven leader in online music services, BandFinder.com</h4>
+      </Typography>
+      <Typography component="p">
+                 <h5>thousands of profiles mean thousands of possibilities to connect with the right Bands. </h5>
+                 <h5>Browse the Listings by genre or nearby, or search for exactly what you are looking for.</h5>
+                 <h1></h1>
+        
+      
 
+      </Typography>
+
+    </Paper>
+  
               
               <Divider />
 
 
-
+  
+              <Toolbar className={classes.toolbar}>
+        <Button size="small">Search</Button>
+        <IconButton>
+          <SearchIcon />
+        </IconButton>
+        <Typography
+          component="h2"
+          variant="h5"
+          color="inherit"
+          align="center"
+          noWrap
+          className={classes.toolbarTitle}
+        >
+         
+        </Typography>
+       
+      </Toolbar>
+      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+        
+          <Link
+            color="inherit"
+            noWrap
+            
+            variant="body2"
+           
+            className={classes.toolbarLink}
+          >
+            
+          </Link>
+       
+      </Toolbar>
  
 
-
-              <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">December</ListSubheader>
-        </GridListTile>
-        {tileData.map(tile => (
-          <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.title} />
-            <GridListTileBar
-              title={tile.title}
-              subtitle={<span>by: {tile.author}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
-  );
-}
+              <Grid container spacing={4}>
+            {featuredPosts.map(post => (
+              <Grid item key={post.title} xs={12} md={6}>
+                <CardActionArea component="a" href="#">
+                  <Card className={classes.card}>
+                    <div className={classes.cardDetails}>
+                      <CardContent>
+                        <Typography component="h2" variant="h5">
+                          {post.title}
+                        </Typography>
+                        <Typography variant="subtitle1" color="textSecondary">
+                          {post.date}
+                        </Typography>
+                        <Typography variant="subtitle1" paragraph>
+                          {post.description}
+                        </Typography>
+                        <Typography variant="subtitle1" color="primary">
+                          Continue reading...
+                        </Typography>
+                      </CardContent>
+                    </div>
+                    <Hidden xsDown>
+                      <CardMedia
+                        className={classes.cardMedia}
+                        image="https://source.unsplash.com/random"
+                        title="Image title"
+                      />
+                    </Hidden>
+                  </Card>
+                </CardActionArea>
+              </Grid>
+            ))}
+          </Grid>
      
 
 
