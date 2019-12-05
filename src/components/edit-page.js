@@ -56,6 +56,7 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
   },
   overlay: {
     position: 'absolute',
@@ -67,10 +68,10 @@ const useStyles = makeStyles(theme => ({
   },
   mainFeaturedPostContent: {
     position: 'relative',
-    padding: theme.spacing(3),
+    padding: theme.spacing(1),
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(6),
-      paddingRight: 0,
+      padding: theme.spacing(16),
+      paddingRight: 10,
     },
   },
   mainGrid: {
@@ -100,19 +101,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
+    backgroundAttachment: 'fixed',
   },
-
-  // container: {
-  //   display: 'flex',
-  //   flexWrap: 'wrap',
-  //   flexDirection: 'column',
-  // },
-
-  // textField: {
-  //   marginLeft: theme.spacing(1),
-  //   marginRight: theme.spacing(1),
-  //   width: '300px',
-  // },
 
 }));
 
@@ -215,15 +205,13 @@ console.log(state);
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                    SEEKING BANDS?
+                  BandFinder.
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
-                    Search Thousands of Musicians and Bands:
+                  intends to be the definitive search platform that help people to connect with your band.
                   </Typography>
-
-                  JOIN FOR FREE!
-Connecting local musicians. Join the thousands of seeking musicians and bands. Musician Classifieds. Sign up free today!
-
+                  So rather than building and managing your own search platform and community, simply utilize our advanced BandFinder website. By becoming an affiliate partner, 
+                  you'll gain a new channel through which to market your products and services to our audience.
                 </div>
 
               </Grid>
@@ -253,8 +241,8 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
             {/* Main content */}
             <Grid alignItems="stretch" item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
-                Create a Beautiful Website With Just A Few Clicks Based Off Your Band Profile
-  Videos,Gallery,Blog
+                <h4>Create a Beautiful Profile With Just A Few Clicks</h4>
+                <h4>Based Off Your Band Profile. Videos, Gallery, Blog, Location and Genre.</h4>
               </Typography>
 
               <form>
@@ -386,7 +374,8 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
             Footer
           </Typography>
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-            Something here to give the footer a purpose!
+          Right from the start, your BandFinder profile distinguishes between individuals and groups.
+           So if you want to create a profile page for a band that needs members, you can.
           </Typography>
           <Copyright />
         </Container>

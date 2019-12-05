@@ -1,18 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import Avatar from '@material-ui/core/Avatar';
 import Skeleton from '@material-ui/lab/Skeleton';
-import Hidden from '@material-ui/core/Hidden';
-import withWidth from '@material-ui/core/withWidth'
 
 
 import { SessionContext } from '../App';
@@ -66,11 +62,8 @@ const useStyles = makeStyles(theme => ({
   },
   mainFeaturedPostContent: {
     position: 'relative',
-    padding: theme.spacing(3),
-    [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(6),
-      paddingRight: 0,
-    },
+    height: '100%',
+    padding: '190px',
   },
   mainGrid: {
     marginTop: theme.spacing(3),
@@ -178,14 +171,13 @@ export default function EditPage() {
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                    SEEKING BANDS?
+                   
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
-                    Search Thousands of Musicians and Bands:
+                    
                   </Typography>
 
-                  JOIN FOR FREE!
-Connecting local musicians. Join the thousands of seeking musicians and bands. Musician Classifieds. Sign up free today!
+                  
 
                 </div>
 
@@ -266,7 +258,7 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
             </Grid>
             {/* End main content */}
             {/* Sidebar */}
-            <Grid item xs={12} md={4}>
+            {/* <Grid item xs={12} md={4}>
               <Paper elevation={0} className={classes.sidebarAboutBox}>
                 <Typography variant="h6" gutterBottom>
                   About
@@ -296,7 +288,7 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
             {/* End sidebar */}
           </Grid>
         </main>
-      </Container>
+      </Container> */}
       {/* Footer */}
       <footer className={classes.footer}>
         <Container maxWidth="lg">

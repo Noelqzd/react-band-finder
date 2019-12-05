@@ -61,6 +61,7 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
     
   },
   overlay: {
@@ -75,7 +76,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     padding: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(6),
+      padding: theme.spacing(10),
       paddingRight: 0,
       
     },
@@ -109,13 +110,13 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
     marginTop: theme.spacing(3),
   },
   footer: {
-
-     backgroundImage: 'url(https://unsplash.com/photos/eMnddgd3pjQ)',
-     backgroundSize: 'cover',
-     backgroundRepeat: 'no-repeat',
-     backgroundPosition: 'center',
-    marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0),
+    marginTop: theme.spacing(10),
+    padding: theme.spacing(10, 0),
+    backgroundImage: 'url(https://asterasvillas.com/wp-content/uploads/2018/05/footer-background-img.jpg)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
 
     
   },
