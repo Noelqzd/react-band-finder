@@ -104,3 +104,17 @@ header{
   display: flex;
 }
 
+
+body {
+  color: rgba(0, 0, 0, 0.87);
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  background-color: rgb(10, 10, 10);
+}
+.band-name{
+  text-align: center;
+}
+
+.avatar{
+  width: 100;
+    height: 100;
+}

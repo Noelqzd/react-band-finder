@@ -10,6 +10,9 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import Avatar from '@material-ui/core/Avatar';
+import Skeleton from '@material-ui/lab/Skeleton';
+import Hidden from '@material-ui/core/Hidden';
+import withWidth from '@material-ui/core/withWidth'
 
 
 import { SessionContext } from '../App';
@@ -105,12 +108,20 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(1),
     },
   },
-  bigAvatar: {
-    width: 200,
-    height: 200,
+  //MY PROFILE
+  root: {
+    flexGrow: 1,
   },
-
-
+  container: {
+    display: 'flex',
+  },
+  paper: {
+    textAlign: 'center',
+     
+    color: theme.palette.text.secondary,
+    flex: '5 3 auto',
+    margin: theme.spacing(1),
+  },
 }));
 
 
@@ -182,22 +193,7 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
             </Grid>
 
           </Paper>
-          <Toolbar className={classes.toolbar}>
-
-            <Typography
-              component="h2"
-              variant="h5"
-              color="inherit"
-              align="center"
-              noWrap
-              className={classes.toolbarTitle}
-            >
-              <Button variant="contained" color="primary">
-                Go to profile
-              </Button>
-            </Typography>
-
-          </Toolbar>
+          
 
           {/* End main featured post */}
           {/* Sub featured posts */}
@@ -209,26 +205,63 @@ Connecting local musicians. Join the thousands of seeking musicians and bands. M
             {/* Main content */}
             <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
-                Create a Beautiful Website With Just A Few Clicks Based Off Your Band Profile
-  Videos,Gallery,Blog
+      <h3 class="band-name">Band Name</h3>
               </Typography>
               <Divider />
               {/* {posts.map(post => (
                 <Markdown className={classes.markdown} key={post.substring(0, 40)}>
                   {post} */}
               {/* </Markdown> */}
-              <Grid container spacing={1} alignItems="flex-end">
-                <Grid item>
-                  
-
-                </Grid>
-                
-              </Grid>
-
-
+              
+              <div className={classes.root}>
+      <div className={classes.container}>
+        
+    <Avatar class="avatar" alt="Remy Sharp" src="https://www.kcbi.org/wp-content/uploads/2019/03/homer-simpson.jpg"/>
+          
+        
+      </div>
+    </div>
+              <div className={classes.root}>
+      <Grid container spacing={3}>
+        
+        <Grid item xs={12} sm={6}>
+        <Paper className={classes.paper}><h5>Phone Number</h5></Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}><h5>Location</h5></Paper>
+        </Grid>
+        <Grid item xs={12}>
+        <Paper className={classes.paper}><h3>Band Bio</h3>
+        <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+           sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+        </Paper>
+        </Grid>
+        <Grid item xs={8} sm={4}>
+        <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circle" width={40} height={40} />
+      <Skeleton variant="rect" width={210} height={118} />
+    </div>
+        </Grid>
+        <Grid item xs={8} sm={4}>
+        <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circle" width={40} height={40} />
+      <Skeleton variant="rect" width={210} height={118} />
+    </div>
+        </Grid>
+        <Grid item xs={8} sm={4}>
+        <div>
+      <Skeleton variant="text" />
+      <Skeleton variant="circle" width={40} height={40} />
+      <Skeleton variant="rect" width={210} height={118} />
+    </div>
+        </Grid>
+        
+      </Grid>
+    </div>
             
-              <Avatar alt="Remy Sharp" src="https://www.kcbi.org/wp-content/uploads/2019/03/homer-simpson.jpg" className={classes.bigAvatar} />
-
+            
 
             </Grid>
             {/* End main content */}

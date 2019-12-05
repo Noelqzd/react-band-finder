@@ -61,6 +61,7 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    
   },
   overlay: {
     position: 'absolute',
@@ -76,6 +77,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(6),
       paddingRight: 0,
+      
     },
   },
   mainGrid: {
@@ -95,16 +97,23 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
   markdown: {
     ...theme.typography.body2,
     padding: theme.spacing(3, 0),
+    
+    
   },
   sidebarAboutBox: {
     padding: theme.spacing(2),
     backgroundColor: theme.palette.grey[200],
+
   },
   sidebarSection: {
     marginTop: theme.spacing(3),
   },
   footer: {
-    backgroundColor: 'black',
+
+     backgroundImage: 'url(https://unsplash.com/photos/eMnddgd3pjQ)',
+     backgroundSize: 'cover',
+     backgroundRepeat: 'no-repeat',
+     backgroundPosition: 'center',
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
 
@@ -120,11 +129,11 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
     background: 'rgb(145,181,203)',
     background: 'linear-gradient(145deg, rgba(145,181,203,1) 72%, rgba(190,214,238,1) 91%)',
   },
-  gridList: {
-    width: 700,
-    height: 950,
-  },
   
+  body:{
+    background: 'rgb(24,76,108)',
+    background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 91%)',
+  }
  
   
   
