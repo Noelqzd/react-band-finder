@@ -247,6 +247,14 @@ console.log(state);
                   onChange={(event, name) => setState({ ...state, name })}
                   value={state.name}
                 />
+                <TextField
+                  type="text"
+                  fullWidth
+                  hintText="Enter your contact number"
+                  floatingLabelText="Phone Number"
+                  onChange={(event, phone) => setState({ ...state, phone })}
+                  value={state.phone}
+                />
                 <br />
                 <TextField id="input-with-icon-grid" label="With a grid"
                   multiLine
