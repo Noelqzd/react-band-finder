@@ -51,6 +51,7 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
   },
   overlay: {
     position: 'absolute',
@@ -208,7 +209,7 @@ export default function EditPage() {
               <div className={classes.root}>
       <div className={classes.container}>
         
-    <Avatar class="avatar" alt="Remy Sharp" src="https://www.kcbi.org/wp-content/uploads/2019/03/homer-simpson.jpg"/>
+    <Avatar class="avatar" alt="Remy Sharp" src="https://media.timeout.com/images/101206597/image.jpg"/>
           
         
       </div>
@@ -288,7 +289,7 @@ export default function EditPage() {
             {/* End sidebar */}
           </Grid>
         </main>
-      </Container> */}
+      </Container> 
       {/* Footer */}
       <footer className={classes.footer}>
         <Container maxWidth="lg">

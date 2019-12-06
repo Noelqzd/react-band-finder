@@ -213,13 +213,10 @@ console.log(state);
                   So rather than building and managing your own search platform and community, simply utilize our advanced BandFinder website. By becoming an affiliate partner, 
                   you'll gain a new channel through which to market your products and services to our audience.
                 </div>
-
               </Grid>
             </Grid>
-
           </Paper>
           <Toolbar className={classes.toolbar}>
-
             <Typography
               component="h2"
               variant="h5"
@@ -232,10 +229,7 @@ console.log(state);
                 Go to profile
               </Button>
             </Typography>
-
           </Toolbar>
-
-
           {/* End sub featured posts */}
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Main content */}
@@ -244,7 +238,6 @@ console.log(state);
                 <h4>Create a Beautiful Profile With Just A Few Clicks</h4>
                 <h4>Based Off Your Band Profile. Videos, Gallery, Blog, Location and Genre.</h4>
               </Typography>
-
               <form>
                 <TextField
                   type="text"
@@ -255,9 +248,6 @@ console.log(state);
                   value={state.name}
                 />
                 <br />
-
-
-
                 <TextField id="input-with-icon-grid" label="With a grid"
                   multiLine
                   rows="5"
@@ -269,8 +259,6 @@ console.log(state);
                   value={state.bio}
                 />
                 <br />
-
-
                 {state.videos.map((video, i) =>
                   <TextField
                     type="text"
@@ -285,7 +273,6 @@ console.log(state);
                     value={video}
                   />
                 )}
-
                 <Button variant="contained" color="primary" onClick={(event, value) => {
                   const videos = state.videos;
                   videos.push("")
@@ -293,7 +280,6 @@ console.log(state);
                 }}>
                   Add Video
 </Button>
-
                 <TextField
                   type="text"
                   fullWidth
@@ -303,35 +289,24 @@ console.log(state);
                   value={state.imgUrl}
                 />
                 <br />
-
                 <FormControl fullWidth className={classes.formControl}>
                   <InputLabel id="demo-simple-select-label">Genre</InputLabel>
-
                   <Select
-
-
-
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={state.genreId}
                     fullWidth
                     onChange={(event) => setState({ ...state, genreId: event.target.value })}
                   >
-
                     {genres.map((item) => {
                       return <MenuItem value={item.id} key={item.id}>{item.name}</MenuItem>
                     })}
                   </Select>
                 </FormControl>
-
-
-
                 <br />
-
                 <Button variant="contained" color="primary" onClick={saveBand}>
                   Submit
 </Button>
-
               </form>
             </Grid>
             {/* End main content */}
@@ -384,4 +359,3 @@ console.log(state);
     </React.Fragment>
   );
 }
-
