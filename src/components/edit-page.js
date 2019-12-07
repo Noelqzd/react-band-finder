@@ -275,7 +275,7 @@ console.log(state);
                   <TextField
                     type="text"
                     fullWidth
-                    hintText="Add you'r videos"
+                    hintText="Add your videos"
                     floatingLabelText="Add or delete videos"
                     onChange={(event, value) => {
                       const videos = state.videos;

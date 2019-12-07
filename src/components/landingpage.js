@@ -18,6 +18,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 
 
@@ -260,7 +261,7 @@ Search Thousands of Musicians and Bands:
       <Typography component="p">
                  <h5>thousands of profiles mean thousands of possibilities to connect with the right Bands. </h5>
                  <h5>Browse the Listings by genre or nearby, or search for exactly what you are looking for.</h5>
-                 <h1></h1>
+                 
         
       
 
@@ -274,10 +275,26 @@ Search Thousands of Musicians and Bands:
 
   
               <Toolbar className={classes.toolbar}>
-        <Button size="small">Search</Button>
-        <IconButton>
+       
           <SearchIcon />
-        </IconButton>
+        
+        <TextField
+            type="text"
+              variant="outlined"
+              margin="normal"
+              required
+              label="Search your favorite Bands"
+              autoFocus
+            />
+            <SearchIcon />
+             <TextField
+            type="text"
+              variant="outlined"
+              margin="normal"
+              required
+              label="Search by genre"
+              autoFocus
+            />
         <Typography
           component="h2"
           variant="h5"
@@ -347,15 +364,12 @@ Search Thousands of Musicians and Bands:
             {/* Sidebar */}
             <Grid item xs={12} md={4}>
               <Paper elevation={0} className={classes.sidebarAboutBox}>
-                <Typography variant="h5" gutterBottom>
-                  About
-                </Typography>
                 <Typography>
-               <h5> BandFinder is a service for serious Bands.</h5> 
-               <h6>Our goal is to provide the most useful online resource that connects the best Bands with you.</h6>
+               <h4> BandFinder is a service for serious Bands.</h4> 
+               <h5>Our goal is to provide the most useful online resource that connects the best Bands with you.</h5>
 
-                Are you looking for a band?
-                 BandFinder understands the differences. You each have different needs, and now, there's one website that truly understands how to help you or your band find exactly what you're looking for.
+               <h6>Are you looking for a band?
+                 BandFinder understands the differences. You each have different needs, and now, there's one website that truly understands how to help you find exactly what you're looking for.</h6> 
                 </Typography>
               </Paper>
              
