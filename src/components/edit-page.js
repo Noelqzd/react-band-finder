@@ -238,9 +238,12 @@ console.log(state);
                 <h4>Create a Beautiful Profile With Just A Few Clicks</h4>
                 <h4>Based Off Your Band Profile. Videos, Gallery, Blog, Location and Genre.</h4>
               </Typography>
-              <form>
+              <form className={classes.form} noValidate>
                 <TextField
                   type="text"
+                  required
+                  variant="outlined"
+                  margin="normal"
                   fullWidth
                   hintText="Enter your band name"
                   floatingLabelText="Band Name"
