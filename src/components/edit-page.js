@@ -157,6 +157,7 @@ console.log(state);
       "bio": state.bio,
       "imgUrl": state.imgUrl,
       "videos": state.videos,
+      "phone": state.phone,
       // "location": {},
       "genreId": state.genreId,
     }, {
