@@ -229,25 +229,13 @@ export default function EditPage() {
            sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
         </Paper>
         </Grid>
-        <Grid item xs={8} sm={4}>
+        
+        
+        <Grid >
         <div>
       <Skeleton variant="text" />
-      <Skeleton variant="circle" width={40} height={40} />
-      <Skeleton variant="rect" width={210} height={118} />
-    </div>
-        </Grid>
-        <Grid item xs={8} sm={4}>
-        <div>
-      <Skeleton variant="text" />
-      <Skeleton variant="circle" width={40} height={40} />
-      <Skeleton variant="rect" width={210} height={118} />
-    </div>
-        </Grid>
-        <Grid item xs={8} sm={4}>
-        <div>
-      <Skeleton variant="text" />
-      <Skeleton variant="circle" width={40} height={40} />
-      <Skeleton variant="rect" width={210} height={118} />
+      <Skeleton variant="circle" width={100} height={100} />
+      <Skeleton variant="rect" width={510} height={318} />
     </div>
         </Grid>
         
