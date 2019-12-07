@@ -104,6 +104,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(6, 0),
     backgroundAttachment: 'fixed',
   },
+  
 
 }));
 
@@ -222,12 +223,17 @@ console.log(state);
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Main content */}
             <Grid alignItems="stretch" item xs={12} md={8}>
-              <Typography variant="h6" gutterBottom>
+            <Paper className={classes.root}>
+              <Typography variant="h4" gutterBottom>
                 <h4>Create a Beautiful Profile With Just A Few Clicks</h4>
                 <h4>Based Off Your Band Profile. Videos, Gallery, Blog, Location and Genre.</h4>
               </Typography>
-              <form className={classes.form} noValidate>
+              </Paper>
+
+
+              <form className={classes.form} noValidate >
                 <TextField
+                
                   type="text"
                   required
                   variant="outlined"
@@ -302,6 +308,9 @@ console.log(state);
                     })}
                   </Select>
                 </FormControl>
+
+
+                
                 <br />
                 <Button variant="contained" color="primary" onClick={saveBand}>
                   Submit
