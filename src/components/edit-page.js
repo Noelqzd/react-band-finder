@@ -14,6 +14,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+
 import Axios from 'axios';
 
 function Copyright() {
@@ -108,22 +109,8 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const archives = [
-  'March 2020',
-  'February 2020',
-  'January 2020',
-  'December 2019',
-  'November 2019',
-  'October 2019',
-  'September 2019',
-  'August 2019',
-  'July 2019',
-  'June 2019',
-  'May 2019',
-  'April 2019',
-];
 
-const social = ['GitHub', 'Twitter', 'Facebook'];
+
 
 export default function EditPage() {
   const classes = useStyles();
@@ -333,22 +320,9 @@ console.log(state);
                   amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
                 </Typography>
               </Paper>
-              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-                Archives
-              </Typography>
-              {archives.map(archive => (
-                <Link display="block" variant="body1" href="#" key={archive}>
-                  {archive}
-                </Link>
-              ))}
-              <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-                Social
-              </Typography>
-              {social.map(network => (
-                <Link display="block" variant="body1" href="#" key={network}>
-                  {network}
-                </Link>
-              ))}
+             
+            
+             
             </Grid>
             {/* End sidebar */}
           </Grid>

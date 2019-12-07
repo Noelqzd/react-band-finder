@@ -39,6 +39,8 @@ function Copyright() {
   
 
 const useStyles = makeStyles(theme => ({
+
+
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
@@ -55,7 +57,6 @@ const useStyles = makeStyles(theme => ({
   },
   mainFeaturedPost: {
     position: 'relative',
-    backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
     backgroundImage: 'url(https://source.unsplash.com/user/erondu)',
@@ -89,6 +90,7 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
   },
   card: {
     display: 'flex',
+    
   },
   cardDetails: {
     flex: 1,
@@ -104,11 +106,14 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
   },
   sidebarAboutBox: {
     padding: theme.spacing(2),
-    backgroundColor: theme.palette.grey[200],
+    background: 'rgb(24,76,108)',
+    background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 91%)',
+
 
   },
   sidebarSection: {
     marginTop: theme.spacing(3),
+    
   },
   footer: {
     marginTop: theme.spacing(10),
@@ -132,12 +137,11 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
     background: 'linear-gradient(145deg, rgba(145,181,203,1) 72%, rgba(190,214,238,1) 91%)',
   },
   
-  body:{
-    background: 'rgb(24,76,108)',
-    background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 91%)',
-  }
  
-  
+  container:{
+    background: 'rgb(145,181,203)',
+    background: 'linear-gradient(145deg, rgba(145,181,203,1) 72%, rgba(190,214,238,1) 91%)',
+  }
   
 }));
 
@@ -181,7 +185,7 @@ export default function Blog() {
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
                     SEEKING BANDS?
-Search Thousands of Musicians and Bands:
+                    Search Thousands of Musicians and Bands:
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
                   BandFinder is the best place on the Internet to find the perfect band you need for your party. It’s totally free, so get started today!
