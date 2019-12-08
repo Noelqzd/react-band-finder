@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
@@ -9,10 +9,10 @@ import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import Avatar from '@material-ui/core/Avatar';
 import Skeleton from '@material-ui/lab/Skeleton';
-
-
-import { SessionContext } from '../App';
-
+import Axios from 'axios';
+import {
+  useParams
+} from "react-router-dom";
 
 function Copyright() {
   return (
@@ -124,15 +124,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function EditPage() {
   const classes = useStyles();
-  const { session } = useContext(SessionContext);
-  const [state, setState] = useState({});
-  useEffect(() => {
-    if (session.user) {
+  const {id} = useParams()
+  console.log(id);
 
-      setState(session.user)
-    }
-  }, [session]);
-  console.log({ session, state });
+  const [ band, setBand] = useState({});
+  const loadBand = async () =>{
+   const response  = await Axios.get(`https://band-api.herokuapp.com/api/bands/${id}?filter={"include":"genre"}`);
+   setBand(response.data);
+  };
+  useEffect(()=> {
+    loadBand()
+    },[])
 
 
   return (
@@ -181,7 +183,7 @@ export default function EditPage() {
             {/* Main content */}
             <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
-      <h3 class="band-name">Band Name</h3>
+          <h3 class="band-name">{band.name}</h3>
               </Typography>
               <Divider />
               {/* {posts.map(post => (
@@ -192,7 +194,7 @@ export default function EditPage() {
               <div className={classes.root}>
       <div className={classes.container}>
         
-    <Avatar class="avatar" alt="Remy Sharp" src="https://media.timeout.com/images/101206597/image.jpg"/>
+    <img alt="Remy Sharp" src={band.imgUrl}/>
           
         
       </div>
@@ -201,15 +203,14 @@ export default function EditPage() {
       <Grid container spacing={3}>
         
         <Grid item xs={12} sm={6}>
-        <Paper className={classes.paper}><h5>Phone Number</h5></Paper>
+                <Paper className={classes.paper}><h5>{band.phone}</h5></Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}><h5>Location</h5></Paper>
+                <Paper className={classes.paper}><h5>{band.email}</h5></Paper>
         </Grid>
         <Grid item xs={12}>
         <Paper className={classes.paper}><h3>Band Bio</h3>
-        <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-           sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+                <h5>{band.bio}</h5>
         </Paper>
         </Grid>
         

@@ -145,20 +145,6 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
   
 }));
 
-
-const featuredPosts = [
-  {
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-  },
-  
- 
-];
-
-
-
 export default function Blog() {
   const classes = useStyles();
   const [ featured, setFeatured] = useState([]);
