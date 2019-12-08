@@ -1,12 +1,16 @@
-import React, { useState,} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Loginscreen from './Loginscreen';
 import Register from './Register';
+import { SessionContext } from '../App';
 const Login = () => {
  
 
-
+  const { setSession } = useContext(SessionContext);
   const [state, setState] = useState({ buttonLabel: 'Register', isLogin: true });
+  useEffect (()=>{
+setSession({logout:true});
+  },[])
   const handleClick = () => {
     setState({
       ...state,

@@ -14,6 +14,8 @@ const App = () => {
     if (session.id) {
 
       localStorage.setItem("session", JSON.stringify(session));
+    } else if (session.logout) {
+      localStorage.removeItem("session");
     }
   }, [session]);
   useEffect(() => {
@@ -34,18 +36,18 @@ const App = () => {
           <Layout>
             <Header className="header-color" title={<Link style={{ textDecoration: 'none', color: 'white' }} to="/">Band Finder</Link>} scroll>
               <Navigation>
-                <Link to="/edit-page">Edit Page</Link>
+                {session && session.user ? <Link to="/edit-page">Edit Page</Link> : null}
                 <Link to="/aboutme">About Me</Link>
-                <Link to="/myprofile">My Profile</Link>
+                {session && session.user ? <Link to={`/band/${session.userId}`}>My Band</Link> : null}
                 <Link to="/login">{session.userId ? "Logout" : "Login"}</Link>
               </Navigation>
             </Header>
             <Drawer title={<Link style={{ textDecoration: 'none', color: 'black' }} to="/">Band Finder</Link>}>
               <Navigation>
-                <Link to="/edit-page">Edit Page</Link>
+                {session && session.user ? <Link to="/edit-page">Edit Page</Link> : null}
                 <Link to="/aboutme">About Me</Link>
-                <Link to="/myprofile">My Profile</Link>
-                <Link to="/login">Login</Link>
+                {session && session.user ? <Link to={`/band/${session.userId}`}>My Band</Link> : null}
+                <Link to="/login">{session.userId ? "Logout" : "Login"}</Link>
               </Navigation>
             </Drawer>
             <Content>

@@ -54,11 +54,11 @@ const useStyles = makeStyles(theme => ({
   const classes = useStyles();
   const handleClick = async () => {
     try {
+      console.log(state);
 
-      const response = await Axios.post("https://band-api.herokuapp.com/api/bands/login?include=user", { email: state.email, password: state.password });
+      const response = await Axios.post("https://band-api.herokuapp.com/api/bands", { email: state.email, password: state.password, name: state.name});
 
-      setSession(response.data);
-      history.push("/edit-page");
+     props.onRegister()
     } catch (e) {
       setState({ ...state, error: "Unable to login, try again" })
     }
@@ -86,7 +86,7 @@ const useStyles = makeStyles(theme => ({
               label="Enter your Band Name"
               name="Band Name"
               autoFocus
-              onChange={(event, name) => setState({ ...state, name })}
+              onChange={(event) => setState({ ...state, name:event.target.value })}
             />
             <TextField
               variant="outlined"
@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
               label="Email"
               name="Email"
               autoFocus
-              onChange={(event, email) => setState({ ...state, email })}
+              onChange={(event) => setState({ ...state, email:event.target.value })}
             
             />
             <TextField
@@ -111,7 +111,7 @@ const useStyles = makeStyles(theme => ({
               type="password"
               id="password"
               autoComplete="current-password"
-              onChange={(event, password) => setState({...state, password })}
+              onChange={(event) => setState({...state, password:event.target.value })}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

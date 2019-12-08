@@ -94,7 +94,7 @@ const Loginscreen = () => {
               name="email"
               autoComplete="email"
               autoFocus
-              onChange={(event, email) => setState({ ...state, email })}
+              onChange={(event) => setState({ ...state, email:event.target.value })}
             />
 
             <TextField
@@ -110,7 +110,7 @@ const Loginscreen = () => {
 
             hintText="Enter your Password"
             floatingLabelText="Password"
-            onChange={(event, password) => setState({ ...state, password })}
+            onChange={(event) => setState({ ...state, password:event.target.value })}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
