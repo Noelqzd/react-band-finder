@@ -10,6 +10,8 @@ import Container from '@material-ui/core/Container';
 import YouTube from 'react-youtube';
 import getYouTubeID from 'get-youtube-id';
 import Axios from 'axios';
+import { styled } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import {
   useParams
 } from "react-router-dom";
@@ -26,6 +28,15 @@ function Copyright() {
     </Typography>
   );
 }
+const MyButton = styled(Button)({
+  background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  border: 0,
+  borderRadius: 8,
+  boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  color: 'white',
+  height: 80,
+  padding: '0 90px',
+});
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -89,23 +100,7 @@ const useStyles = makeStyles(theme => ({
   sidebarSection: {
     marginTop: theme.spacing(3),
   },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0),
-  },
-
-  //   AVATAR
-  root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
   //MY PROFILE
-  root: {
-    flexGrow: 1,
-  },
   container: {
     display: 'flex',
   },
@@ -115,6 +110,19 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
     flex: '5 3 auto',
     margin: theme.spacing(1),
+  },
+  root: {
+    padding: theme.spacing(3, 2),
+    marginRight: '200px',
+    marginTop: '0px',
+  },
+  footer: {
+    marginTop: theme.spacing(10),
+    padding: theme.spacing(10, 0),
+    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/10/25/10/07/music-instruments-2887457_960_720.jpg)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'top',
   },
 }));
 
@@ -143,9 +151,8 @@ export default function EditPage() {
       <Container maxWidth="lg">
 
         <main>
-          {/* Main featured post */}
           <Paper className={classes.mainFeaturedPost}>
-            {/* Increase the priority of the hero background image */}
+
             {
               <img
                 style={{ display: 'none' }}
@@ -173,74 +180,66 @@ export default function EditPage() {
             </Grid>
 
           </Paper>
-
-
-          {/* End main featured post */}
-          {/* Sub featured posts */}
-
-          {/* End sub featured posts */}
-          <Grid container spacing={5} className={classes.mainGrid}>
-            {/* Main content */}
-            <Grid item xs={12} md={8}>
-              <Typography variant="h6" gutterBottom>
-                <h3 class="band-name">{band.name}</h3>
-              </Typography>
-              <Divider />
-              {/* {posts.map(post => (
+          {/* Main content */}
+          <Grid item lg={14} md={10}>
+            <MyButton><h3>{band.name}</h3></MyButton>
+            <Divider />
+            {/* {posts.map(post => (
                 <Markdown className={classes.markdown} key={post.substring(0, 40)}>
                   {post} */}
-              {/* </Markdown> */}
+            {/* </Markdown> */}
+            <Grid item xs={14} md={10}>
+            <div className={classes.root}>
+              <div className={classes.container}>
 
-              <div className={classes.root}>
-                <div className={classes.container}>
-
-                  <img alt="Remy Sharp" src={band.imgUrl} />
+                <img class="profile"alt="Remy Sharp" src={band.imgUrl} />
 
 
-                </div>
               </div>
-              <div className={classes.root}>
-                <Grid container spacing={3}>
-
-                  <Grid item xs={12} sm={6}>
-                    <Paper className={classes.paper}><h5>{band.phone}</h5></Paper>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Paper className={classes.paper}><h5>{band.email}</h5></Paper>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Paper className={classes.paper}><h3>Band Bio</h3>
-                      <h5>{band.bio}</h5>
-                    </Paper>
-                  </Grid>
-
-
-                  <Grid >
-                    <div>
-                      {band.videos?(band.videos.map((video) => {
-
-                        return <YouTube
-                          videoId= {getYouTubeID(video)}
-                          opts={{
-                            height: '390',
-                            width: '640',
-                            playerVars: {
-                            }
-
-                          }}
-                        />
-                      })):null}
-                    </div>
-                  </Grid>
-
-                </Grid>
-              </div>
-
-
-
+            </div>
             </Grid>
+            <div className={classes.root}>
+              <Grid container spacing={3}>
+
+                <Grid item xs={12} sm={6}>
+                <MyButton><h3>{band.phone}</h3></MyButton>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <MyButton><h6>{band.email}</h6></MyButton>
+                </Grid>
+                <Grid item lg={12} sm={6}>
+                  <Paper className={classes.paper}><h3>Band Bio</h3>
+                    <h5>{band.bio}</h5>
+                  </Paper>
+                </Grid>
+
+
+                <Grid item lg={18} sm={6}>
+                  <div>
+                    {band.videos ? (band.videos.map((video) => {
+
+                      return <YouTube
+                        videoId={getYouTubeID(video)}
+                        opts={{
+                          height: '390',
+                          width: '640',
+                          playerVars: {
+                          }
+
+                        }}
+                      />
+                    })) : null}
+                  </div>
+                </Grid>
+
+              </Grid>
+            </div>
+
+
 
           </Grid>
+
+
         </main>
       </Container>
       {/* Footer */}

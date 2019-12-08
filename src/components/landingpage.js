@@ -8,14 +8,12 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import BandCard from './band-card';
 import Axios from 'axios';
-
-
+import { styled } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 function Copyright() {
   return (
@@ -30,7 +28,15 @@ function Copyright() {
   );
 }
 
-
+const MyButton = styled(Button)({
+  background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  border: 0,
+  borderRadius: 8,
+  boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  color: '#1aa28c',
+  height: 80,
+  padding: '0 90px',
+});
   
 
 const useStyles = makeStyles(theme => ({
@@ -84,8 +90,7 @@ const useStyles = makeStyles(theme => ({
 background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 91%)',
   },
   card: {
-    display: 'flex',
-    
+    display: 'flex',  
   },
   cardDetails: {
     flex: 1,
@@ -117,12 +122,7 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'top',
-    
-
-    
   },
-
-  
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -206,10 +206,10 @@ export default function Blog() {
               
               className={classes.toolbarTitle}
             >
-               <Paper className={classes.root}>
+               
                  
-                  Trending Bands
-                  </Paper>
+                  <MyButton><h3>Trending Bands</h3></MyButton>
+                  
                   
             </Typography>
             
