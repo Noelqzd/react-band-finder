@@ -106,7 +106,7 @@ header{
 
 
 body {
-  color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(0, 0, 0, 0.87) !important;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 .band-name{

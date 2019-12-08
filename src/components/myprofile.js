@@ -235,8 +235,8 @@ export default function EditPage() {
       {/* Footer */}
       <footer className={classes.footer}>
         <Container maxWidth="lg">
-          <Typography variant="h6" align="center" gutterBottom>
-            Footer
+          <Typography variant="h5" align="center" gutterBottom>
+            BandFinder
           </Typography>
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
             Something here to give the footer a purpose!
