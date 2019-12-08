@@ -106,8 +106,12 @@ header{
 
 
 body {
-  background-color: rgba(0, 0, 0, 0.87) !important;
+  background-image: url(https://cdn.pixabay.com/photo/2017/11/11/18/31/music-player-2939936_960_720.jpg) !important;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-position: center; 
+  background-size: cover;
 }
 .band-name{
   text-align: center;

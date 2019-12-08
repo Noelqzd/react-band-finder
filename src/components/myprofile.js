@@ -47,10 +47,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/user/erondu)',
+    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/10/25/10/07/music-instruments-2887457_960_720.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    backgroundPosition: 'bottom',
     backgroundAttachment: 'fixed',
   },
   overlay: {
@@ -149,7 +149,7 @@ export default function EditPage() {
             {
               <img
                 style={{ display: 'none' }}
-                src="https://source.unsplash.com/user/erondu"
+                src="https://cdn.pixabay.com/photo/2016/11/23/15/48/audience-1853662_960_720.jpg"
                 alt="background"
               />
             }

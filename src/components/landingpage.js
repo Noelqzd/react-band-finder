@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/user/erondu)',
+    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/10/25/10/07/music-instruments-2887457_960_720.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -113,11 +113,11 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
   footer: {
     marginTop: theme.spacing(10),
     padding: theme.spacing(10, 0),
-    backgroundImage: 'url(https://asterasvillas.com/wp-content/uploads/2018/05/footer-background-img.jpg)',
+    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/10/25/10/07/music-instruments-2887457_960_720.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundAttachment: 'fixed',
+    backgroundPosition: 'top',
+    
 
     
   },
@@ -172,7 +172,7 @@ export default function Blog() {
             {
               <img
                 style={{ display: 'none' }}
-                src="https://source.unsplash.com/photos/random?collection=827741"
+                src="https://cdn.pixabay.com/photo/2018/07/28/11/08/guitar-3567767_960_720.jpg"
                 alt="background"
               />
             }
@@ -188,15 +188,14 @@ export default function Blog() {
                   <Typography variant="h5" color="inherit" paragraph>
                   BandFinder is the best place on the Internet to find the perfect band you need for your party. It’s totally free, so get started today!
                   </Typography>
-                  <Link variant="subtitle1" href="#">
-                    Continue reading…
-                  </Link>
                 </div>
 
               </Grid>
             </Grid>
 
           </Paper>
+          
+          
           <Toolbar className={classes.toolbar}>
            
             <Typography
@@ -204,16 +203,19 @@ export default function Blog() {
               variant="h5"
               color="inherit"
               align="center"
-              noWrap
+              
               className={classes.toolbarTitle}
             >
-               <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />}  />
+               <Paper className={classes.root}>
+                 
                   Trending Bands
+                  </Paper>
                   
             </Typography>
             
             
           </Toolbar>
+          
           <Grid container spacing={4}>
             {featured.map(band =>
             <BandCard band = {
@@ -235,21 +237,10 @@ export default function Blog() {
       <Typography component="p">
                  <h5>thousands of profiles mean thousands of possibilities to connect with the right Bands. </h5>
                  <h5>Browse the Listings by genre or nearby, or search for exactly what you are looking for.</h5>
-                 
-        
-      
-
       </Typography>
-
     </Paper>
-  
-              
-              <Divider />
-
-
-  
+      <Divider />
               <Toolbar className={classes.toolbar}>
-       
           <SearchIcon />
         
         <TextField
