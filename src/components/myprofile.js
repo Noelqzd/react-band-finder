@@ -7,8 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-import Avatar from '@material-ui/core/Avatar';
-import Skeleton from '@material-ui/lab/Skeleton';
+import YouTube from 'react-youtube';
+import getYouTubeID from 'get-youtube-id';
 import Axios from 'axios';
 import {
   useParams
@@ -95,7 +95,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(6, 0),
   },
 
-//   AVATAR
+  //   AVATAR
   root: {
     display: 'flex',
     '& > *': {
@@ -111,7 +111,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     textAlign: 'center',
-     
+
     color: theme.palette.text.secondary,
     flex: '5 3 auto',
     margin: theme.spacing(1),
@@ -124,17 +124,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function EditPage() {
   const classes = useStyles();
-  const {id} = useParams()
+  const { id } = useParams()
   console.log(id);
 
-  const [ band, setBand] = useState({});
-  const loadBand = async () =>{
-   const response  = await Axios.get(`https://band-api.herokuapp.com/api/bands/${id}?filter={"include":"genre"}`);
-   setBand(response.data);
+  const [band, setBand] = useState({});
+  const loadBand = async () => {
+    const response = await Axios.get(`https://band-api.herokuapp.com/api/bands/${id}?filter={"include":"genre"}`);
+    setBand(response.data);
   };
-  useEffect(()=> {
+  useEffect(() => {
     loadBand()
-    },[])
+  }, [])
 
 
   return (
@@ -159,13 +159,13 @@ export default function EditPage() {
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                   
+
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
-                    
+
                   </Typography>
 
-                  
+
 
                 </div>
 
@@ -173,66 +173,76 @@ export default function EditPage() {
             </Grid>
 
           </Paper>
-          
+
 
           {/* End main featured post */}
           {/* Sub featured posts */}
-          
+
           {/* End sub featured posts */}
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Main content */}
             <Grid item xs={12} md={8}>
               <Typography variant="h6" gutterBottom>
-          <h3 class="band-name">{band.name}</h3>
+                <h3 class="band-name">{band.name}</h3>
               </Typography>
               <Divider />
               {/* {posts.map(post => (
                 <Markdown className={classes.markdown} key={post.substring(0, 40)}>
                   {post} */}
               {/* </Markdown> */}
-              
+
               <div className={classes.root}>
-      <div className={classes.container}>
-        
-    <img alt="Remy Sharp" src={band.imgUrl}/>
-          
-        
-      </div>
-    </div>
+                <div className={classes.container}>
+
+                  <img alt="Remy Sharp" src={band.imgUrl} />
+
+
+                </div>
+              </div>
               <div className={classes.root}>
-      <Grid container spacing={3}>
-        
-        <Grid item xs={12} sm={6}>
-                <Paper className={classes.paper}><h5>{band.phone}</h5></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-                <Paper className={classes.paper}><h5>{band.email}</h5></Paper>
-        </Grid>
-        <Grid item xs={12}>
-        <Paper className={classes.paper}><h3>Band Bio</h3>
-                <h5>{band.bio}</h5>
-        </Paper>
-        </Grid>
-        
-        
-        <Grid >
-        <div>
-      <Skeleton variant="text" />
-      <Skeleton variant="circle" width={100} height={100} />
-      <Skeleton variant="rect" width={510} height={318} />
-    </div>
-        </Grid>
-        
-      </Grid>
-    </div>
-            
-            
+                <Grid container spacing={3}>
+
+                  <Grid item xs={12} sm={6}>
+                    <Paper className={classes.paper}><h5>{band.phone}</h5></Paper>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Paper className={classes.paper}><h5>{band.email}</h5></Paper>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Paper className={classes.paper}><h3>Band Bio</h3>
+                      <h5>{band.bio}</h5>
+                    </Paper>
+                  </Grid>
+
+
+                  <Grid >
+                    <div>
+                      {band.videos?(band.videos.map((video) => {
+
+                        return <YouTube
+                          videoId= {getYouTubeID(video)}
+                          opts={{
+                            height: '390',
+                            width: '640',
+                            playerVars: {
+                            }
+
+                          }}
+                        />
+                      })):null}
+                    </div>
+                  </Grid>
+
+                </Grid>
+              </div>
+
+
 
             </Grid>
-          
+
           </Grid>
         </main>
-      </Container> 
+      </Container>
       {/* Footer */}
       <footer className={classes.footer}>
         <Container maxWidth="lg">
