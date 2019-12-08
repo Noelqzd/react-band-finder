@@ -6,6 +6,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link as RouterLink } from 'react-router-dom'
+import Link from '@material-ui/core/Link'
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -25,8 +27,10 @@ const BandCard = ({ band }) => {
     return (
 
         <Grid item key={band.id} xs={12} md={6}>
-            <CardActionArea component="a" href="#">
-                <Card className={classes.card}>
+            <Link underline='none' component={RouterLink} to={ `/band/${band.id}`}>
+
+            <CardActionArea>               
+                 <Card className={classes.card}>
                     <div className={classes.cardDetails}>
                         <CardContent>
                             <Typography component="h2" variant="h5">
@@ -54,6 +58,7 @@ const BandCard = ({ band }) => {
 
                 </Card>
             </CardActionArea>
+            </Link>
         </Grid>
     )
 }

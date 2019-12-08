@@ -18,6 +18,7 @@ const Main = () => (
     <Route path="/loginscreen" component={Loginscreen} />
     <Route path="/register" component={Register} />
     <Route path="/myprofile" component={Myprofile} />
+    <Route path="/band/:id" component={Myprofile} />
 
   </Switch>
 )

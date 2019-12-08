@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -17,8 +16,9 @@ import Container from '@material-ui/core/Container';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import SearchIcon from '@material-ui/icons/Search';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import BandCard from './band-card';
+import Axios from 'axios';
 
 
 
@@ -161,7 +161,24 @@ const featuredPosts = [
 
 export default function Blog() {
   const classes = useStyles();
+  const [ featured, setFeatured] = useState([]);
+  const [ results, setResults ] = useState([]);
+  const loadFeatured = async () =>{
+   const response  = await Axios.get('https://band-api.herokuapp.com/api/bands?filter={"where":{"featured":true},"include":"genre"}');
+   setFeatured(response.data)
+  };
 
+  const searchBand = async (q) =>{
+    if (!q){
+      setResults([])
+      return;
+    }
+    const response  = await Axios.get(`https://band-api.herokuapp.com/api/bands?filter={"where":{"name":{"like":".*${q}.*","options":"i"}},"include":"genre","limit":12}`);
+    setResults(response.data)
+   };
+  useEffect(()=> {
+  loadFeatured()
+  },[])
   return (
     <React.Fragment>
       <CssBaseline />
@@ -216,41 +233,13 @@ export default function Blog() {
             
             
           </Toolbar>
-
-          {/* End main featured post */}
-          {/* Sub featured posts */}
           <Grid container spacing={4}>
-            {featuredPosts.map(post => (
-              <Grid item key={post.title} xs={12} md={6}>
-                <CardActionArea component="a" href="#">
-                  <Card className={classes.card}>
-                    <div className={classes.cardDetails}>
-                      <CardContent>
-                        <Typography component="h2" variant="h5">
-                          {post.title}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
-                          {post.date}
-                        </Typography>
-                        <Typography variant="subtitle1" paragraph>
-                          {post.description}
-                        </Typography>
-                        <Typography variant="subtitle1" color="primary">
-                          Continue reading...
-                        </Typography>
-                      </CardContent>
-                    </div>
-                    <Hidden xsDown>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
-                        title="Image title"
-                      />
-                    </Hidden>
-                  </Card>
-                </CardActionArea>
-              </Grid>
-            ))}
+            {featured.map(band =>
+            <BandCard band = {
+              band
+            }/>
+            )}
+           
           </Grid>
           {/* End sub featured posts */}
           <Grid container spacing={5} className={classes.mainGrid}>
@@ -287,18 +276,15 @@ export default function Blog() {
               variant="outlined"
               margin="normal"
               required
+               fullWidth
+               onChange = {(event)=>{
+               searchBand(event.target.value)
+               }}
               label="Search your favorite Bands"
               autoFocus
             />
-            <SearchIcon />
-             <TextField
-            type="text"
-              variant="outlined"
-              margin="normal"
-              required
-              label="Search by genre"
-              autoFocus
-            />
+           
+             
         <Typography
           component="h2"
           variant="h5"
@@ -328,37 +314,12 @@ export default function Blog() {
  
 
               <Grid container spacing={4}>
-            {featuredPosts.map(post => (
-              <Grid item key={post.title} xs={12} md={6}>
-                <CardActionArea component="a" href="#">
-                  <Card className={classes.card}>
-                    <div className={classes.cardDetails}>
-                      <CardContent>
-                        <Typography component="h2" variant="h5">
-                          {post.title}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
-                          {post.date}
-                        </Typography>
-                        <Typography variant="subtitle1" paragraph>
-                          {post.description}
-                        </Typography>
-                        <Typography variant="subtitle1" color="primary">
-                          Continue reading...
-                        </Typography>
-                      </CardContent>
-                    </div>
-                    <Hidden xsDown>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
-                        title="Image title"
-                      />
-                    </Hidden>
-                  </Card>
-                </CardActionArea>
-              </Grid>
-            ))}
+              {results.map(band =>
+            <BandCard band = {
+              band
+            }/>
+            )}
+            
           </Grid>
      
 
