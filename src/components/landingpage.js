@@ -12,8 +12,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import BandCard from './band-card';
 import Axios from 'axios';
-import { styled } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 
 function Copyright() {
   return (
@@ -28,33 +26,12 @@ function Copyright() {
   );
 }
 
-const MyButton = styled(Button)({
-  background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-  border: 0,
-  borderRadius: 8,
-  boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-  color: '#1aa28c',
-  height: 80,
-  padding: '0 90px',
-});
-  
-
 const useStyles = makeStyles(theme => ({
-
-
-  toolbar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
+ toolbar: {
+    borderBottom: `10px solid  ${theme.palette.divider}`,
   },
   toolbarTitle: {
     flex: 1,
-  },
-  toolbarSecondary: {
-    justifyContent: 'space-between',
-    overflowX: 'auto',
-  },
-  toolbarLink: {
-    padding: theme.spacing(1),
-    flexShrink: 0,
   },
   mainFeaturedPost: {
     position: 'relative',
@@ -65,7 +42,6 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundAttachment: 'fixed',
-    
   },
   overlay: {
     position: 'absolute',
@@ -74,23 +50,24 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     left: 0,
     backgroundColor: 'rgba(0,0,0,.3)',
+    border: 5,
+    borderRadius: 20,
+    boxShadow: '0 1px 3px 3px black',
   },
   mainFeaturedPostContent: {
     position: 'relative',
     padding: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(10),
-      paddingRight: 0,
-      
+      paddingRight: 10,
+
     },
   },
   mainGrid: {
     marginTop: theme.spacing(3),
-    background: 'rgb(24,76,108)',
-background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 91%)',
   },
   card: {
-    display: 'flex',  
+    display: 'flex',
   },
   cardDetails: {
     flex: 1,
@@ -98,22 +75,13 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
   cardMedia: {
     width: 160,
   },
-  markdown: {
-    ...theme.typography.body2,
-    padding: theme.spacing(3, 0),
-    
-    
-  },
   sidebarAboutBox: {
     padding: theme.spacing(2),
-    background: 'rgb(24,76,108)',
-    background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 91%)',
-
-
-  },
-  sidebarSection: {
-    marginTop: theme.spacing(3),
-    
+    background: 'rgb(22,174,189)',
+    background: 'linear-gradient(145deg, rgba(22,174,189,1) 43%, rgba(6,212,206,1) 91%)',
+    border: 5,
+    borderRadius: 20,
+    boxShadow: '0 1px 5px 5px black',
   },
   footer: {
     marginTop: theme.spacing(10),
@@ -122,44 +90,42 @@ background: 'linear-gradient(145deg, rgba(24,76,108,1) 3%, rgba(190,214,238,1) 9
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'top',
+    border: 5,
+    boxShadow: '0 1px 3px 3px black',
   },
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    background: 'rgb(145,181,203)',
-    background: 'linear-gradient(145deg, rgba(145,181,203,1) 72%, rgba(190,214,238,1) 91%)',
+    background: 'rgb(22,174,189)',
+    background: 'linear-gradient(145deg, rgba(22,174,189,1) 43%, rgba(6,212,206,1) 91%)',
+    border: 5,
+    borderRadius: 20,
+    boxShadow: '0 1px 3px 3px black',
   },
-  
- 
-  container:{
-    background: 'rgb(145,181,203)',
-    background: 'linear-gradient(145deg, rgba(145,181,203,1) 72%, rgba(190,214,238,1) 91%)',
-  }
-  
 }));
 
 export default function Blog() {
   const classes = useStyles();
-  const [ featured, setFeatured] = useState([]);
-  const [ results, setResults ] = useState([]);
-  const loadFeatured = async () =>{
-   const response  = await Axios.get('https://band-api.herokuapp.com/api/bands?filter={"where":{"featured":true},"include":"genre"}');
-   setFeatured(response.data)
+  const [featured, setFeatured] = useState([]);
+  const [results, setResults] = useState([]);
+  const loadFeatured = async () => {
+    const response = await Axios.get('https://band-api.herokuapp.com/api/bands?filter={"where":{"featured":true},"include":"genre"}');
+    setFeatured(response.data)
   };
 
-  const searchBand = async (q) =>{
-    if (!q){
+  const searchBand = async (q) => {
+    if (!q) {
       setResults([])
       return;
     }
-    const response  = await Axios.get(`https://band-api.herokuapp.com/api/bands?filter={"where":{"name":{"like":".*${q}.*","options":"i"}},"include":"genre","limit":12}`);
+    const response = await Axios.get(`https://band-api.herokuapp.com/api/bands?filter={"where":{"name":{"like":".*${q}.*","options":"i"}},"include":"genre","limit":12}`);
     setResults(response.data)
-   };
-  useEffect(()=> {
-  loadFeatured()
-  },[])
+  };
+  useEffect(() => {
+    loadFeatured()
+  }, [])
   return (
     <React.Fragment>
       <CssBaseline />
@@ -186,7 +152,7 @@ export default function Blog() {
                     Search Thousands of Musicians and Bands:
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
-                  BandFinder is the best place on the Internet to find the perfect band you need for your party. It’s totally free, so get started today!
+                    BandFinder is the best place on the Internet to find the perfect band you need for your party. It’s totally free, so get started today!
                   </Typography>
                 </div>
 
@@ -194,127 +160,96 @@ export default function Blog() {
             </Grid>
 
           </Paper>
-          
-          
+
+
           <Toolbar className={classes.toolbar}>
-           
             <Typography
               component="h1"
               variant="h5"
               color="inherit"
               align="center"
-              
               className={classes.toolbarTitle}
             >
-               
-                 
-                  <MyButton><h3>Trending Bands</h3></MyButton>
-                  
-                  
+              <Paper className={classes.root}>
+               <h3>Trending Bands</h3>
+               </Paper>
             </Typography>
-            
-            
           </Toolbar>
-          
           <Grid container spacing={4}>
             {featured.map(band =>
-            <BandCard band = {
-              band
-            }/>
+              <BandCard band={
+                band
+              } />
             )}
-           
           </Grid>
           {/* End sub featured posts */}
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Main content */}
             <Grid item xs={12} md={8}>
-              
-
               <Paper className={classes.root}>
-      <Typography variant="h5" component="h3">
-      <h4>As a proven leader in online music services, BandFinder.com</h4>
-      </Typography>
-      <Typography component="p">
-                 <h5>thousands of profiles mean thousands of possibilities to connect with the right Bands. </h5>
-                 <h5>Browse the Listings by genre or nearby, or search for exactly what you are looking for.</h5>
-      </Typography>
-    </Paper>
-      <Divider />
+                <Typography variant="h5" component="h3">
+                  <h4>As a proven leader in online music services, BandFinder.com</h4>
+                </Typography>
+                <Typography component="p">
+                  <h5>thousands of profiles mean thousands of possibilities to connect with the right Bands. </h5>
+                  <h5>Browse the Listings by genre or nearby, or search for exactly what you are looking for.</h5>
+                </Typography>
+              </Paper>
+              <Divider />
               <Toolbar className={classes.toolbar}>
-          <SearchIcon />
-        
-        <TextField
-            type="text"
-              variant="outlined"
-              margin="normal"
-              required
-               fullWidth
-               onChange = {(event)=>{
-               searchBand(event.target.value)
-               }}
-              label="Search your favorite Bands"
-              autoFocus
-            />
-           
-             
-        <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          align="center"
-          noWrap
-          className={classes.toolbarTitle}
-        >
-         
-        </Typography>
-       
-      </Toolbar>
-      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
-        
-          <Link
-            color="inherit"
-            noWrap
-            
-            variant="body2"
-           
-            className={classes.toolbarLink}
-          >
-            
-          </Link>
-       
-      </Toolbar>
- 
+                <SearchIcon />
+                <TextField
+                  type="text"
+                  variant="outlined"
+                  margin="normal"
 
+                  required
+                  fullWidth
+                  onChange={(event) => {
+                    searchBand(event.target.value)
+                  }}
+                  label="Search your favorite Bands"
+                  autoFocus
+                />
+                <Typography
+                  component="h2"
+                  variant="h5"
+                  color="inherit"
+                  align="center"
+                  noWrap
+                  className={classes.toolbarTitle}
+                >
+                </Typography>
+              </Toolbar>
+              <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+                <Link
+                  color="inherit"
+                  noWrap
+                  variant="body2"
+                  className={classes.toolbarLink}
+                >
+                </Link>
+              </Toolbar>
               <Grid container spacing={4}>
-              {results.map(band =>
-            <BandCard band = {
-              band
-            }/>
-            )}
-            
-          </Grid>
-     
-
-
+                {results.map(band =>
+                  <BandCard band={
+                    band
+                  } />
+                )}
+              </Grid>
             </Grid>
             {/* End main content */}
             {/* Sidebar */}
             <Grid item xs={12} md={4}>
               <Paper elevation={0} className={classes.sidebarAboutBox}>
                 <Typography>
-               <h4> BandFinder is a service for serious Bands.</h4> 
-               <h5>Our goal is to provide the most useful online resource that connects the best Bands with you.</h5>
-
-               <h6>Are you looking for a band?
-                 BandFinder understands the differences. You each have different needs, and now, there's one website that truly understands how to help you find exactly what you're looking for.</h6> 
+                  <h4> BandFinder is a service for serious Bands.</h4>
+                  <h5>Our goal is to provide the most useful online resource that connects the best Bands with you.</h5>
+                  <h6>Are you looking for a band?
+                 BandFinder understands the differences. You each have different needs, and now, there's one website that truly understands how to help you find exactly what you're looking for.</h6>
                 </Typography>
               </Paper>
-             
-              
-            
             </Grid>
-
-            {/* End sidebar */}
           </Grid>
         </main>
       </Container>
@@ -330,7 +265,6 @@ export default function Blog() {
           <Copyright />
         </Container>
       </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }
