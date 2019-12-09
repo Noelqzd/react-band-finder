@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     marginTop: theme.spacing(2),
-    padding: theme.spacing(2,0),
+    padding: theme.spacing(2, 0),
   },
   number: {
     display: 'flex',
@@ -113,11 +113,6 @@ const useStyles = makeStyles(theme => ({
     background: 'linear-gradient(145deg, rgba(46,185,199,1) 44%, rgba(163,167,238,1) 71%)',
   },
 }));
-
-
-
-
-
 export default function EditPage() {
   const classes = useStyles();
   const { id } = useParams()
@@ -131,7 +126,6 @@ export default function EditPage() {
   useEffect(() => {
     loadBand()
   }, [])
-
 
   return (
     <React.Fragment>
@@ -156,8 +150,8 @@ export default function EditPage() {
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
-                  </Typography> 
-                   </div>
+                  </Typography>
+                </div>
               </Grid>
             </Grid>
           </Paper>
@@ -171,38 +165,38 @@ export default function EditPage() {
             </div>
           </Grid>
           <div className={classes.root}>
-            
-              <Grid item xs={12} sm={6}>
-                <Paper className={classes.number}><h5>{band.phone}</h5></Paper>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Paper className={classes.number}><h5>{band.email}</h5></Paper>
-              </Grid>
-              <Grid item lg={12} sm={6}>
 
-                <Paper className={classes.bio}>
-                  <h3>Band Bio</h3>
-                  <h5>{band.bio}</h5>
-                </Paper>
-              </Grid>
-               <div className={classes.videos1}>
-                {band.videos ? (band.videos.map((video) => {
+            <Grid item xs={12} sm={6}>
+              <Paper className={classes.number}><h5>{band.phone}</h5></Paper>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Paper className={classes.number}><h5>{band.email}</h5></Paper>
+            </Grid>
+            <Grid item lg={12} sm={6}>
 
-                  return <YouTube
-                    videoId={getYouTubeID(video)}
-                    opts={{
-                      height: '390',
-                      width: '640',
-                      playerVars: {
-                      }
+              <Paper className={classes.bio}>
+                <h3>Band Bio</h3>
+                <h5>{band.bio}</h5>
+              </Paper>
+            </Grid>
+            <div className={classes.videos1}>
+              {band.videos ? (band.videos.map((video) => {
 
-                    }}
-                  />
-                })) : null}
-              </div>
-            
-         </div>
-       </main>
+                return <YouTube
+                  videoId={getYouTubeID(video)}
+                  opts={{
+                    height: '390',
+                    width: '640',
+                    playerVars: {
+                    }
+
+                  }}
+                />
+              })) : null}
+            </div>
+
+          </div>
+        </main>
       </Container>
       {/* Footer */}
       <footer className={classes.footer}>

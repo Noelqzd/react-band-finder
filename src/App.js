@@ -37,7 +37,7 @@ const App = () => {
             <Header className="header-color" title={<Link style={{ textDecoration: 'none', color: 'white' }} to="/">Band Finder</Link>} scroll>
               <Navigation>
                 {session && session.user ? <Link to="/edit-page">Edit Page</Link> : null}
-                <Link to="/aboutme">About Me</Link>
+                <Link to="/aboutme">About Us</Link>
                 {session && session.user ? <Link to={`/band/${session.userId}`}>My Band</Link> : null}
                 <Link to="/login">{session.userId ? "Logout" : "Login"}</Link>
               </Navigation>
@@ -45,7 +45,7 @@ const App = () => {
             <Drawer title={<Link style={{ textDecoration: 'none', color: 'black' }} to="/">Band Finder</Link>}>
               <Navigation>
                 {session && session.user ? <Link to="/edit-page">Edit Page</Link> : null}
-                <Link to="/aboutme">About Me</Link>
+                <Link to="/aboutme">About Us</Link>
                 {session && session.user ? <Link to={`/band/${session.userId}`}>My Band</Link> : null}
                 <Link to="/login">{session.userId ? "Logout" : "Login"}</Link>
               </Navigation>
