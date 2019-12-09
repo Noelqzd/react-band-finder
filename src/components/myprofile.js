@@ -10,7 +10,6 @@ import Container from '@material-ui/core/Container';
 import YouTube from 'react-youtube';
 import getYouTubeID from 'get-youtube-id';
 import Axios from 'axios';
-import Toolbar from '@material-ui/core/Toolbar';
 import {
   useParams
 } from "react-router-dom";
