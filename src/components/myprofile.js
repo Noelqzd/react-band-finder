@@ -75,6 +75,7 @@ const useStyles = makeStyles(theme => ({
     boxShadow: '0 1px 3px 3px black',
     background: 'rgb(46,185,199)',
     background: 'linear-gradient(145deg, rgba(46,185,199,1) 44%, rgba(163,167,238,1) 71%)',
+    marginTop: theme.spacing(2),
   },
   image: {
     display: 'flex',
@@ -91,14 +92,14 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'top',
     border: 5,
-    boxShadow: '0 1px 3px 3px black',  
+    boxShadow: '0 1px 3px 3px black',
   },
   videos1: {
     display: 'inline',
     justifyContent: 'space-around',
     overflow: 'hidden',
     marginTop: theme.spacing(2),
-    padding: theme.spacing(2,40),
+    padding: theme.spacing(2,0),
   },
   number: {
     display: 'flex',
@@ -110,7 +111,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 20,
     boxShadow: '0 1px 3px 3px black',
     background: 'rgb(46,185,199)',
-background: 'linear-gradient(145deg, rgba(46,185,199,1) 44%, rgba(163,167,238,1) 71%)',
+    background: 'linear-gradient(145deg, rgba(46,185,199,1) 44%, rgba(163,167,238,1) 71%)',
   },
 }));
 
@@ -166,78 +167,56 @@ export default function EditPage() {
 
               </Grid>
             </Grid>
-            
+
           </Paper>
           {/* Main content */}
           <Grid item lg={14} md={10}>
-          <Toolbar className={classes.toolbar}>
-            <Typography
-              component="h1"
-              variant="h5"
-              align="center"
-              className={classes.toolbarTitle}
-            >
-                <Paper className={classes.number}><h3>{band.name}</h3></Paper>
-           </Typography>
-            </Toolbar>
+            <Paper className={classes.number}><h3>{band.name}</h3></Paper>
             <Divider />
-           
             <div className={classes.image}>
-             
-                <img class="profile"alt="Remy Sharp" src={band.imgUrl} />
-              
-            </div>
-            </Grid>
-            <div className={classes.root}>
-              <Grid container spacing={3}>
+              <img class="profile" alt="Remy Sharp" src={band.imgUrl} />
 
-                <Grid item xs={12} sm={6}>
+            </div>
+          </Grid>
+          <div className={classes.root}>
+            
+
+              <Grid item xs={12} sm={6}>
                 <Paper className={classes.number}><h5>{band.phone}</h5></Paper>
-                </Grid>
-                <Grid item xs={12} sm={6}>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <Paper className={classes.number}><h5>{band.email}</h5></Paper>
-                </Grid>
-                <Grid item lg={12} sm={6}>
-                  
-                  <Paper className={classes.bio}>
+              </Grid>
+              <Grid item lg={12} sm={6}>
+
+                <Paper className={classes.bio}>
                   <h3>Band Bio</h3>
                   <h5>{band.bio}</h5>
-                  </Paper>
-                </Grid>
+                </Paper>
+              </Grid>
+               <div className={classes.videos1}>
+                {band.videos ? (band.videos.map((video) => {
 
+                  return <YouTube
+                    videoId={getYouTubeID(video)}
+                    opts={{
+                      height: '390',
+                      width: '640',
+                      playerVars: {
+                      }
 
-               
-                  <div className={classes.videos1}>
-                    {band.videos ? (band.videos.map((video) => {
-
-                      return <YouTube
-                        videoId={getYouTubeID(video)}
-                        opts={{
-                          height: '390',
-                          width: '640',
-                          playerVars: {
-                          }
-
-                        }}
-                      />
-                    })) : null}
-                  </div>
-                </Grid>
-
-             
-            </div>
-
-
- 
-
-         
-
-        </main>
+                    }}
+                  />
+                })) : null}
+              </div>
+            
+         </div>
+       </main>
       </Container>
       {/* Footer */}
       <footer className={classes.footer}>
         <Container maxWidth="lg">
-        <Typography variant="h6" align="center" gutterBottom>
+          <Typography variant="h6" align="center" gutterBottom>
             BandFinder.com
           </Typography>
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
