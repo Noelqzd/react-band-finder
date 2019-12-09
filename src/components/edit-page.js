@@ -276,11 +276,18 @@ export default function EditPage() {
             <Grid item xs={12} md={4}>
               <Paper elevation={0} className={classes.sidebarAboutBox}>
                 <Typography variant="h6" gutterBottom>
-                  About
+                 <h5>How to add your Info, videos and Images.</h5>
                 </Typography>
                 <Typography>
-                  Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit
-                  amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+                 <h6> 1.-Add or change the band Name.</h6>
+                 <h6> 2.-Add/edit yor contact phone number.</h6>
+                 <h6> 3.-You can type the band description and change it anytime.</h6>
+                 <h6> 4.-Click on add video, and add all the videos you want.</h6>
+                 <h6> 5.-Add an profile image, (only one) Change or delete. </h6>
+                 <h6> 6.-Pick your band's genre.</h6>
+                 <h6> 7.-Click submit, now go to My Band and see the results.</h6>
+                 
+
                 </Typography>
               </Paper>
 

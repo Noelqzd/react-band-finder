@@ -24,7 +24,7 @@ const Register = (props) => {
       height: '100vh',
     },
     image: {
-      backgroundImage: 'url(https://source.unsplash.com/random)',
+      backgroundImage: 'url(https://cdn.pixabay.com/photo/2016/01/19/17/38/concert-1149805_960_720.jpg)',
       backgroundRepeat: 'no-repeat',
       backgroundColor:
         theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],

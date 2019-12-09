@@ -233,11 +233,12 @@ export default function EditPage() {
       {/* Footer */}
       <footer className={classes.footer}>
         <Container maxWidth="lg">
-          <Typography variant="h5" align="center" gutterBottom>
-            BandFinder
+        <Typography variant="h6" align="center" gutterBottom>
+            BandFinder.com
           </Typography>
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-            Something here to give the footer a purpose!
+            <h5>Right from the start, your BandFinder profile distinguishes between individuals and groups.</h5>
+            So if you want to create a profile page for a band that needs members, you can.
           </Typography>
           <Copyright />
         </Container>
