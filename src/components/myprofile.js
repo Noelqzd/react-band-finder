@@ -42,21 +42,9 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     flexShrink: 0,
   },
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    backgroundColor: 'rgba(0,0,0,.3)',
-  },
   mainFeaturedPostContent: {
     position: 'relative',
     height: '48px',
-  },
- debarAboutBox: {
-    padding: theme.spacing(2),
-    backgroundColor: theme.palette.grey[200],
   },
   sidebarSection: {
     marginTop: theme.spacing(3),
@@ -67,7 +55,6 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     textAlign: 'center',
-
     color: theme.palette.text.secondary,
     flex: '5 3 auto',
     margin: theme.spacing(1),
@@ -77,11 +64,22 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    background: 'rgb(145,181,203)',
-    background: 'linear-gradient(145deg, rgba(145,181,203,1) 72%, rgba(190,214,238,1) 91%)',
+  },
+  bio: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
     border: 5,
     borderRadius: 20,
     boxShadow: '0 1px 3px 3px black',
+  },
+  image: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    marginTop: theme.spacing(2),
+    padding: theme.spacing(2, 0),
   },
   footer: {
     marginTop: theme.spacing(10),
@@ -91,6 +89,23 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'top',
     border: 5,
+    boxShadow: '0 1px 3px 3px black',  
+  },
+  video: {
+    display: 'inline',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    marginTop: theme.spacing(2),
+    padding: theme.spacing(2,40),
+  },
+  number: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    marginTop: theme.spacing(2),
+    padding: theme.spacing(2, 0),
+    border: 5,
+    borderRadius: 20,
     boxShadow: '0 1px 3px 3px black',
   },
 }));
@@ -158,37 +173,37 @@ export default function EditPage() {
               align="center"
               className={classes.toolbarTitle}
             >
-                <Paper className={classes.root}><h3>{band.name}</h3></Paper>
+                <Paper className={classes.number}><h3>{band.name}</h3></Paper>
            </Typography>
             </Toolbar>
             <Divider />
-            <Grid item xs={14} md={10}>
-            <div className={classes.root}>
-              <div className={classes.container}>
+           
+            <div className={classes.image}>
+             
                 <img class="profile"alt="Remy Sharp" src={band.imgUrl} />
-              </div>
+              
             </div>
             </Grid>
             <div className={classes.root}>
               <Grid container spacing={3}>
 
                 <Grid item xs={12} sm={6}>
-                <Paper className={classes.root}><h5>{band.phone}</h5></Paper>
+                <Paper className={classes.number}><h5>{band.phone}</h5></Paper>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                <Paper className={classes.root}><h5>{band.email}</h5></Paper>
+                <Paper className={classes.number}><h5>{band.email}</h5></Paper>
                 </Grid>
                 <Grid item lg={12} sm={6}>
                   
-                  <Paper className={classes.root}>
+                  <Paper className={classes.bio}>
                   <h3>Band Bio</h3>
                   <h5>{band.bio}</h5>
                   </Paper>
                 </Grid>
 
 
-                <Grid item lg={18} sm={6}>
-                  <div>
+               
+                  <div className={classes.bio}>
                     {band.videos ? (band.videos.map((video) => {
 
                       return <YouTube
@@ -205,13 +220,13 @@ export default function EditPage() {
                   </div>
                 </Grid>
 
-              </Grid>
+             
             </div>
 
 
+ 
 
-          </Grid>
-
+         
 
         </main>
       </Container>

@@ -19,36 +19,36 @@ const Register = (props) => {
 
   const history = useHistory();
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    height: '100vh',
-  },
-  image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  paper: {
-    margin: theme.spacing(8, 4),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+  const useStyles = makeStyles(theme => ({
+    root: {
+      height: '100vh',
+    },
+    image: {
+      backgroundImage: 'url(https://source.unsplash.com/random)',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor:
+        theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+    paper: {
+      margin: theme.spacing(8, 4),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
 
 
   const classes = useStyles();
@@ -56,15 +56,13 @@ const useStyles = makeStyles(theme => ({
     try {
       console.log(state);
 
-      const response = await Axios.post("https://band-api.herokuapp.com/api/bands", { email: state.email, password: state.password, name: state.name});
+      const response = await Axios.post("https://band-api.herokuapp.com/api/bands", { email: state.email, password: state.password, name: state.name });
 
-     props.onRegister()
+      props.onRegister()
     } catch (e) {
       setState({ ...state, error: "Unable to login, try again" })
     }
   }
-
-
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -86,7 +84,7 @@ const useStyles = makeStyles(theme => ({
               label="Enter your Band Name"
               name="Band Name"
               autoFocus
-              onChange={(event) => setState({ ...state, name:event.target.value })}
+              onChange={(event) => setState({ ...state, name: event.target.value })}
             />
             <TextField
               variant="outlined"
@@ -98,8 +96,8 @@ const useStyles = makeStyles(theme => ({
               label="Email"
               name="Email"
               autoFocus
-              onChange={(event) => setState({ ...state, email:event.target.value })}
-            
+              onChange={(event) => setState({ ...state, email: event.target.value })}
+
             />
             <TextField
               variant="outlined"
@@ -111,15 +109,13 @@ const useStyles = makeStyles(theme => ({
               type="password"
               id="password"
               autoComplete="current-password"
-              onChange={(event) => setState({...state, password:event.target.value })}
+              onChange={(event) => setState({ ...state, password: event.target.value })}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            
-               <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => handleClick(event)} />
-            
+            <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => handleClick(event)} />
             <Grid container>
             </Grid>
           </form>
@@ -128,9 +124,8 @@ const useStyles = makeStyles(theme => ({
     </Grid>
   );
 }
-
 const style = {
   margin: 15,
 };
-  
+
 export default Register;

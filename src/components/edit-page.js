@@ -34,30 +34,19 @@ function Copyright() {
 
 
 const useStyles = makeStyles(theme => ({
-  toolbar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  toolbarTitle: {
-    flex: 1,
-  },
-  toolbarSecondary: {
-    justifyContent: 'space-between',
-    overflowX: 'auto',
-  },
-  toolbarLink: {
-    padding: theme.spacing(1),
-    flexShrink: 0,
-  },
   mainFeaturedPost: {
     position: 'relative',
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/user/erondu)',
+    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/10/25/10/07/music-instruments-2887457_960_720.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundAttachment: 'fixed',
+    border: 5,
+    borderRadius: 20,
+    boxShadow: '0 1px 3px 3px black',
   },
   overlay: {
     position: 'absolute',
@@ -78,48 +67,38 @@ const useStyles = makeStyles(theme => ({
   mainGrid: {
     marginTop: theme.spacing(3),
   },
-  card: {
-    display: 'flex',
-  },
-  cardDetails: {
-    flex: 1,
-  },
-  cardMedia: {
-    width: 160,
-  },
-  markdown: {
-    ...theme.typography.body2,
-    padding: theme.spacing(3, 0),
-  },
   sidebarAboutBox: {
     padding: theme.spacing(2),
     backgroundColor: theme.palette.grey[200],
-  },
-  sidebarSection: {
-    marginTop: theme.spacing(3),
+    border: 5,
+    borderRadius: 20,
+    boxShadow: '0 1px 3px 3px black',
   },
   footer: {
-    backgroundColor: theme.palette.background.paper,
-    marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0),
-    backgroundAttachment: 'fixed',
+    marginTop: theme.spacing(10),
+    padding: theme.spacing(10, 0),
+    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/10/25/10/07/music-instruments-2887457_960_720.jpg)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'top',
+    border: 5,
+    boxShadow: '0 1px 3px 3px black',
   },
-  
-
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    border: 5,
+    borderRadius: 20,
+    boxShadow: '0 1px 3px 3px black',
+  },
 }));
-
-
-
-
-
-
 export default function EditPage() {
   const classes = useStyles();
   const { session, setSession } = useContext(SessionContext);
-  const [state, setState] = useState({videos:[]});
+  const [state, setState] = useState({ videos: [] });
   const [genres, setGenres] = useState([]);
-
-
 
   useEffect(() => {
     if (session.user) {
@@ -137,7 +116,7 @@ export default function EditPage() {
       setGenres(response.data);
     })
   }
-console.log(state);
+  console.log(state);
 
   const saveBand = () => {
     Axios.patch(`https://band-api.herokuapp.com/api/bands/${session.userId}`, {
@@ -167,20 +146,13 @@ console.log(state);
     });
   }
 
-
-
-
-
-
   return (
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
 
         <main>
-          {/* Main featured post */}
           <Paper className={classes.mainFeaturedPost}>
-            {/* Increase the priority of the hero background image */}
             {
               <img
                 style={{ display: 'none' }}
@@ -188,52 +160,34 @@ console.log(state);
                 alt="background"
               />
             }
-
             <div className={classes.overlay} />
             <Grid container>
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                  BandFinder.
+                    BandFinder.
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
-                  intends to be the definitive search platform that help people to connect with your band.
+                    intends to be the definitive search platform that help people to connect with your band.
                   </Typography>
-                  So rather than building and managing your own search platform and community, simply utilize our advanced BandFinder website. By becoming an affiliate partner, 
+                  So rather than building and managing your own search platform and community, simply utilize our advanced BandFinder website. By becoming an affiliate partner,
                   you'll gain a new channel through which to market your products and services to our audience.
                 </div>
               </Grid>
             </Grid>
           </Paper>
-          <Toolbar className={classes.toolbar}>
-            <Typography
-              component="h2"
-              variant="h5"
-              color="inherit"
-              align="center"
-              noWrap
-              className={classes.toolbarTitle}
-            >
-              <Button variant="contained" color="primary">
-                Go to profile
-              </Button>
-            </Typography>
-          </Toolbar>
           {/* End sub featured posts */}
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Main content */}
             <Grid alignItems="stretch" item xs={12} md={8}>
-            <Paper className={classes.root}>
-              <Typography variant="h4" gutterBottom>
-                <h4>Create a Beautiful Profile With Just A Few Clicks</h4>
-                <h4>Based Off Your Band Profile. Videos, Gallery, Blog, Location and Genre.</h4>
-              </Typography>
+              <Paper className={classes.root}>
+                <Typography variant="h4" gutterBottom>
+                  <h4>Create a Beautiful Profile With Just A Few Clicks</h4>
+                  <h4>Based Off Your Band Profile. Videos, Gallery, Blog, Location and Genre.</h4>
+                </Typography>
               </Paper>
-
-
               <form className={classes.form} noValidate >
                 <TextField
-                
                   type="text"
                   required
                   variant="outlined"
@@ -310,7 +264,7 @@ console.log(state);
                 </FormControl>
 
 
-                
+
                 <br />
                 <Button variant="contained" color="primary" onClick={saveBand}>
                   Submit
@@ -329,9 +283,9 @@ console.log(state);
                   amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
                 </Typography>
               </Paper>
-             
-            
-             
+
+
+
             </Grid>
             {/* End sidebar */}
           </Grid>
@@ -341,11 +295,11 @@ console.log(state);
       <footer className={classes.footer}>
         <Container maxWidth="lg">
           <Typography variant="h6" align="center" gutterBottom>
-            Footer
+            BandFinder.com
           </Typography>
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Right from the start, your BandFinder profile distinguishes between individuals and groups.
-           So if you want to create a profile page for a band that needs members, you can.
+            <h5>Right from the start, your BandFinder profile distinguishes between individuals and groups.</h5>
+            So if you want to create a profile page for a band that needs members, you can.
           </Typography>
           <Copyright />
         </Container>
