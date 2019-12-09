@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -48,14 +47,6 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 20,
     boxShadow: '0 1px 3px 3px black',
   },
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    backgroundColor: 'rgba(0,0,0,.3)',
-  },
   mainFeaturedPostContent: {
     position: 'relative',
     padding: theme.spacing(1),
@@ -73,6 +64,8 @@ const useStyles = makeStyles(theme => ({
     border: 5,
     borderRadius: 20,
     boxShadow: '0 1px 3px 3px black',
+    background: 'rgb(46,185,199)',
+    background: 'linear-gradient(145deg, rgba(46,185,199,1) 44%, rgba(163,167,238,1) 71%)',
   },
   footer: {
     marginTop: theme.spacing(10),
@@ -92,6 +85,8 @@ const useStyles = makeStyles(theme => ({
     border: 5,
     borderRadius: 20,
     boxShadow: '0 1px 3px 3px black',
+    background: 'rgb(46,185,199)',
+    background: 'linear-gradient(145deg, rgba(46,185,199,1) 44%, rgba(163,167,238,1) 71%)',
   },
 }));
 export default function EditPage() {

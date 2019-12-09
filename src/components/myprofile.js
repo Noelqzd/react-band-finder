@@ -73,6 +73,8 @@ const useStyles = makeStyles(theme => ({
     border: 5,
     borderRadius: 20,
     boxShadow: '0 1px 3px 3px black',
+    background: 'rgb(46,185,199)',
+    background: 'linear-gradient(145deg, rgba(46,185,199,1) 44%, rgba(163,167,238,1) 71%)',
   },
   image: {
     display: 'flex',
@@ -91,7 +93,7 @@ const useStyles = makeStyles(theme => ({
     border: 5,
     boxShadow: '0 1px 3px 3px black',  
   },
-  video: {
+  videos1: {
     display: 'inline',
     justifyContent: 'space-around',
     overflow: 'hidden',
@@ -107,6 +109,8 @@ const useStyles = makeStyles(theme => ({
     border: 5,
     borderRadius: 20,
     boxShadow: '0 1px 3px 3px black',
+    background: 'rgb(46,185,199)',
+background: 'linear-gradient(145deg, rgba(46,185,199,1) 44%, rgba(163,167,238,1) 71%)',
   },
 }));
 
@@ -203,7 +207,7 @@ export default function EditPage() {
 
 
                
-                  <div className={classes.bio}>
+                  <div className={classes.videos1}>
                     {band.videos ? (band.videos.map((video) => {
 
                       return <YouTube

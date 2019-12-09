@@ -27,7 +27,7 @@ function Copyright() {
 }
 
 const useStyles = makeStyles(theme => ({
- toolbar: {
+  toolbar: {
     borderBottom: `10px solid  ${theme.palette.divider}`,
   },
   toolbarTitle: {
@@ -77,8 +77,8 @@ const useStyles = makeStyles(theme => ({
   },
   sidebarAboutBox: {
     padding: theme.spacing(2),
-    background: 'rgb(22,174,189)',
-    background: 'linear-gradient(145deg, rgba(22,174,189,1) 43%, rgba(6,212,206,1) 91%)',
+    background: 'rgb(46,185,199)',
+    background: 'linear-gradient(145deg, rgba(46,185,199,1) 44%, rgba(163,167,238,1) 71%)',
     border: 5,
     borderRadius: 20,
     boxShadow: '0 1px 5px 5px black',
@@ -98,8 +98,8 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    background: 'rgb(22,174,189)',
-    background: 'linear-gradient(145deg, rgba(22,174,189,1) 43%, rgba(6,212,206,1) 91%)',
+    background: 'rgb(46,185,199)',
+    background: 'linear-gradient(145deg, rgba(46,185,199,1) 44%, rgba(163,167,238,1) 71%)',
     border: 5,
     borderRadius: 20,
     boxShadow: '0 1px 3px 3px black',
@@ -171,8 +171,8 @@ export default function Blog() {
               className={classes.toolbarTitle}
             >
               <Paper className={classes.root}>
-               <h3>Trending Bands</h3>
-               </Paper>
+                <h3>Trending Bands</h3>
+              </Paper>
             </Typography>
           </Toolbar>
           <Grid container spacing={4}>
@@ -256,7 +256,7 @@ export default function Blog() {
       {/* Footer */}
       <footer className={classes.footer}>
         <Container maxWidth="lg">
-        <Typography variant="h6" align="center" gutterBottom>
+          <Typography variant="h6" align="center" gutterBottom>
             BandFinder.com
           </Typography>
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
