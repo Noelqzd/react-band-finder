@@ -154,19 +154,12 @@ export default function EditPage() {
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
-
-                  </Typography>
-
-
-
-                </div>
-
+                  </Typography> 
+                   </div>
               </Grid>
             </Grid>
-
           </Paper>
           {/* Main content */}
           <Grid item lg={14} md={10}>
@@ -179,7 +172,6 @@ export default function EditPage() {
           </Grid>
           <div className={classes.root}>
             
-
               <Grid item xs={12} sm={6}>
                 <Paper className={classes.number}><h5>{band.phone}</h5></Paper>
               </Grid>
