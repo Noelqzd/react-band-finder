@@ -272,7 +272,7 @@ export default function EditPage() {
                   <h6> 2.-Add/edit yor contact phone number.</h6>
                   <h6> 3.-You can type the band description and change it anytime.</h6>
                   <h6> 4.-Click on add video, and add all the videos you want.</h6>
-                  <h6> 5.-Add an profile image, (only one) Change or delete. </h6>
+                  <h6> 5.-Add a profile image, (only one) Change or delete. </h6>
                   <h6> 6.-Pick your band's genre.</h6>
                   <h6> 7.-Click submit, now go to My Band and see the results.</h6>
                 </Typography>
